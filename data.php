@@ -24,8 +24,8 @@
 		$PASSWORDS = $_POST["pass"];
 		
 		
-		$query="INSERT INTO u_registration(Username, Passwords, C_Name, Address, email, DOB, Gender, 				Age, Phone_no) VALUES ('$USERNAME','$PASSWORDS','$NAME','$ADD','$EMAIL','$DOB','$GENDER','$AGE','$PHONE')";
-
+		$query="INSERT INTO u_registration(Username, Passwords, C_Name,  DOB, Gender, Age, Phone_no) VALUES ('$USERNAME','$PASSWORDS','$NAME','$DOB','$GENDER','$AGE','$PHONE')";
+	//	$query="INSERT INTO u_registration(Username, Passwords, C_Name, Address, email, DOB, Gender, 				Age, Phone_no) VALUES ('$USERNAME','$PASSWORDS','$NAME','$ADD','$EMAIL','$DOB','$GENDER','$AGE','$PHONE')";
 			if(mysqli_query($link,$query))
 			{
 				header("location:loginpage.php");
@@ -35,7 +35,7 @@
 			{
 				echo "Error : Could not able to execute";
 				mysqli_error($query);
-			
+				
 				mysqli_error($link);
 
 			}

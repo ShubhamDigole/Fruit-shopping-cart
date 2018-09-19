@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -70,9 +76,26 @@
 			
 		}
 		#log{
-			position: relative;
+			color:white;
+			text-decoration:none;
+			position: absolute;
 			display: block;
 			float: right;
+			right:0;
+		}
+		#login{
+			
+			color:white;
+			text-decoration:none;
+			right:0;
+			position:absolute;
+			float:right;
+			display:block;
+		}
+
+		#login a{
+
+			color:white;
 		}
     </style>
   </head>
@@ -93,9 +116,11 @@
 	        <button id="search"class="btn btn-outline-success" type="submit">Search</button>
           </form>
 			<form action="logout.php">
-				<input type="submit" class="nav-item btn btn-primary"> Log Out </button>
+				<input type="submit" class="nav-item btn btn-danger" value="Log Out" id="log">
+				
 			</form>
-      </div>
+			<a href="loginpage.php"><button id="login" class="nav-item btn btn-danger"> Login</button></a>
+		</div>
   </nav>
 	  
     <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel" style="background:#fcdd6f" >
@@ -238,9 +263,44 @@
 	  </div>
 	  <hr>
 
-	  <?php 
-	  $_SESSION[login]= $username;
-	  echo "hii".$_SESSION['login'];
+		<?php 
+		require_once("DB_controller.php");
+		
+		$user = $_SESSION['login'];
+		$query = "SELECT * FROM u_registration WHERE Username = '$user'";
+
+		$sql = $result = mysqli_query($link,$query);
+		
+		if($user == NULL){
+?>
+<script>
+document.getElementById("login").style.display = "block";
+document.getElementById("log").style.display = "none";
+</script>
+			<?php
+		}
+else{
+
+?>
+	<script>
+		document.getElementById("login").style.display = "none";
+		document.getElementById("log").style.display = "block";
+		</script>
+	<?php	
+
+}
+		
+		$sql = $result = mysqli_query($link,$query);
+
+		while($row = mysqli_fetch_array($sql)){
+			echo "<p> $row[3]";
+
+
+		}
+
+		  
+
+		echo $user;
 	  ?>
 	  <footer class="alert-info">Content for  class "alert-info" Goes Here</footer>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

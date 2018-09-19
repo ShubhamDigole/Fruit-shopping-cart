@@ -4,7 +4,7 @@
 	unset($_SESSION['username']);
 	session_destroy();
 	
-	header("Location:loginpage.php");
+	header("Location:index.php");
 	exit;
 	
 ?>

@@ -74,9 +74,9 @@
 					<form action="data2.php" method="post">
 						<p>
 						
-						  <input type="text" name="txtusername" placeholder="Username" required> <br><br>
+						  <input type="text" name="username" placeholder="Username" required> <br><br>
 						 
-						  <input type="password" name="txtpassword" placeholder="Password" class="box" required> <br><br>
+						  <input type="password" name="password" placeholder="Password" class="box" required> <br><br>
 						  <input id="button" type="submit" value="Submit"> 
 
 						</p>

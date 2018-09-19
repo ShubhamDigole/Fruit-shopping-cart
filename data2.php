@@ -5,10 +5,10 @@
 include("DB_controller.php");
 session_start();
 
-if( isset($_POST['txtusername']))
+if( isset($_POST['username']))
 {	
-	$username = $_POST['txtusername'];
-	$password = $_POST['txtpassword'];
+	$username = $_POST['username'];
+	$password = $_POST['password'];
 	//username and password sent from user
 	$user = mysqli_real_escape_string($link, $username);
 	$pass = mysqli_real_escape_string($link, $password);
@@ -16,7 +16,7 @@ if( isset($_POST['txtusername']))
 	$sql = "SELECT * FROM u_registration WHERE Username = '$user' and Passwords = '$pass'";
 
 	//$sql = "SElECT id FROM admin WHERE username = 'amar' and passcode = 'veer'";
-
+	
 	$result = mysqli_query($link,$sql);
 	
 	
@@ -33,8 +33,9 @@ if( isset($_POST['txtusername']))
 		header("location:index.php");
 		echo"login successful";
 	 	$query="Insert into login (Username,Password) values('$username','$password')";
-		
+		echo $_SESSION['login'];
 		$Result = mysqli_query($link,$query);
+		
 	}
 	else
 	{	
