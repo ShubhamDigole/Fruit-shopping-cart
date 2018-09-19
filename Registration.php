@@ -1,157 +1,179 @@
-
-
 <!doctype html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-
-.style1 {
-	color: #FFFFFF;
-	font-size: x-large;
-	font-family: "comic Sans MS";
-}
-.style2 {color: #FFFFFF}
-td{
-
-  color:white;
-}
-
-</style>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+	<style type= "text/css">
+		.mar{
+			position: center;
+		}
+	</style>
 </head>
-<body marginheight="1" marginwidth="1">
-<form id="form1" name="Registration" method="POST" action="loginpage.php">
-<table width="100%" height="100%" bgcolor="#000066" cellpadding="9">
-  <tr>
-    <td colspan="4" bgcolor="#FFCC00"><font color="#0000FF" size="5">Registration</td>
-  </tr>
 
-  <tr>
-    <td width="14%" align="right">First Name </td>
-    <td width="86%" colspan="3"><input name="txtfirstname" type="text" id="txtfirstname" value="<?php ?>"></td>
-  </tr>	
+<body>
+<div>REGISTRATION</div>
+	<form name="registration" method="post" action="data.php" >
+<div class="mar">
+	<div>
+	  <p>
+	    <label>First Name :  </label>
+	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+	    <input type="text" name="fname">
+	  </p>
+	</div>
+	
+	<div>
+	  <p>
+	    <label>Middle Name : </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <input type="text" name="mname">
+	  </p>
+</div>
 
-    <td align="right">Middle Name  </td>
-    <td colspan="3"><input name="txtmiddlename" type="text" id="txtmiddlename" value="<?php if(isset($_POST["txtmiddlename"])) echo $_POST["txtmiddlename"];?>" /></td>
-  </tr>
-  <tr>
-    <td align="right">Last Name  </td>
-    <td colspan="3"><input name="txtlastname" type="text" id="txtlastname" value="<?php if(isset($_POST["txtlastname"])) echo $_POST["txtlastname"];?>" /></td>
-  </tr>
-  <tr>
-    <td align="right">Address </td>
-    <td colspan="3"><textarea name="txtaddress" id="txtaddress" value="<?php if(isset($_POST["txtaddress"])) echo $_POST["txtaddress"];?>"></textarea></td>
-  </tr>
-  <tr>
-    <td align="right">State</td>
-    <td colspan="3"><input name="txtstate" type="text" id="txtstate" value="<?php if(isset($_POST["txtstate"])) echo $_POST["txtstate"];?>" /></td>
-  </tr>
-  <tr>
-    <td align="right">District </td>
-    <td colspan="3"><input name="txtdistrict" type="text" id="txtdistrict" value="<?php if(isset($_POST["txtdistrict"])) echo $_POST["txtdistrict"];?>" /></td>
-  </tr>
-  <tr>
-    <td align="right">Date of Birth  </td>
-    <td colspan="3"><input type="date" name="bdate" id="date" value="<?php if(isset($_POST["bdate"])) echo $_POST["bdate"];?>" /></td>
-    </tr>
-  <tr>
-    <td align="right">Gender </td>
-    <td colspan="3"><input name="gender" type="radio" value="male"  />
-    Male  
-      <input name="gender" type="radio" value = "female"  />
-    Female </td>
-  </tr>
-  <tr>
-    <td align="right">Country </td>
-    <td colspan="3"><select name="combocountry" id="combocountry"  >
-      <option>Africa </option>
-      <option>Australia </option>
-      <option>Belgium </option>
-      <option>Canada </option>
-      <option>Dubai </option>
-      <option>England </option>
-      <option>France </option>
-      <option>Germany </option>
-      <option>India </option>
-      <option>Japan </option>
-      <option>Korea </option>
-      <option>London </option>
-  </select>&nbsp;</td>
-  </tr>
-  <tr>
-    <td align="right">E-mail </td>
-    <td colspan="3"><input name="txtemail" type="text" id="txtemail" /></td>
-  </tr>
-  <tr>
-    <td align="right">Phone </td>
-    <td colspan="3"><input name="txtphone" type="text" id="txtphone" /></td>
-  </tr>
+	
+	<div>
+	  <p>
+	    <label>last Name : </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <input type="text" name="lname">
+	  </p>
+	</div>
 
-  <tr>
-    <td align="right">User Name  </td>
-    <td colspan="3">
-      <input name="txtusername" type="text" id="txtusername"  />
-    </td>
-  </tr>
-  <tr>
-    <td align="right">Password </td>
-    <td colspan="3"><input name="txtpassword" type="text" id="txtpassword" /></td>
-  </tr>
-  <tr>
-    <td align="right">Confirm Password  </td>
-    <td colspan="3"><input name="txtconpassword" type="text" id="txtconpassword" /></td>
-  </tr>
-  
-  <tr>
-    <td colspan="4" align="right" bgcolor="#FFCC00">
-		<input name="buttonsubmit" type="submit" id="buttonsubmit" value="Submit" border="0" onClick="regis()" /> 
-		<input name="buttoncancel" type="cancel" id="buttoncancel" value="Cancel" />
-	</td>
-  </tr>
-</table>
-</form>
-	</td>
-  </tr>
-  </table>
+	
+	<div>
+	  <p>
+	    <label>Address : </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <input type="textarea" name="address">
+	  </p>
+	</div>
 
+	
+	<div>
+	  <p>
+	    <label>City : </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <select name="city" id="city">
+	      
+	      <option value="karad">Karad</option>	
+	      <option value="pune">pune</option>	
+	      <option value="satara">satara</option>	
+	      <option value="kolhapur">kolhapur</option>	
+	      <option value="sangli">sangli</option>	
+	     	
+        </select>	
+		  
+		  <script>
+		  
+		  var city = document.getElementById('city');
+			  console.log(city);
+		  
+		  </script>
+	  </p>
+	</div>
+
+	
+	<div>
+	  <p>
+	    <label>District : </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <input type="text" name="district">
+	  </p>
+	</div>
+
+	
+	<div>
+	  <p>
+	    <label>State : </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <select name="state">
+	      
+	      <option value="maharashtra">Maharashtra</option>	
+	      <option value="Gujrat">Gujrat</option>	
+	      <option value="Rajasthan">Rajasthan</option>	
+	      <option value="goa">goa</option>	
+	      </select>
+	  </p>
+	</div>
+
+	<div>
+	  <p>
+	    <label>Country : </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <select name="country">
+	      
+	      <option value="india">India</option>	
+	      <option value="africa">Africa</option>	
+	      <option value="singapur">Singapur</option>	
+	     	
+        </select>
+	  </p>
+	</div>
+	
+	
+	<div>
+	  <p>
+	    <label>DOB : </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <input type="date" name="dob">
+	  </p>
+	</div>
+	
+	<div>
+	  <p>
+	    <label>Age : </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <input type="number" name="age">
+	  </p>
+	</div> 
+	
+	<div>
+	  <p>
+	<label>Gender : </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type="radio" name="gender" value="male" <?php if(isset($gender) && $gender == "male") "checked";?> />Male
+	<input type="radio" name="gender" value="female" <?php if(isset($gender) && $gender == "female") "checked";?>> Female
+      </p>
+	</div>
+	
+	<div>
+	  <p>
+	    <label>Email : </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    &nbsp;&nbsp;&nbsp;&nbsp;
+	    <input type="text" name="email">
+	  </p>
+	</div>
+	
+	<div>
+	  <p>
+	    <label>Phone no. : </label>
+	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <input type="text" name="phoneno">
+	  </p>
+	</div>
+
+	<div>
+	  <p>
+	    <label>Username : </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <input type="text" name="username">
+	  </p>
+	</div>
+	
+	<div>
+	  <p>
+	    <label>Password : </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <input type="password" name="pass">
+	  </p>
+	</div>
+	
+	<div>
+	  <p>
+	    <label>Confirm Password : </label>
+	    <input type="password" name="password">
+	  </p>
+	</div>
+	
+	<div>
+		<p>
+			<input type="submit" name="submit" value="Submit"  >
+			<input type="button" name="Cancel" value="Cancel">
+			
+			
+		</p>
+	</div>
+</div>
+	</form>
+	
 </body>
 </html>
 
-<?php
-
-require_once("DB_controller.php");
-	function regis()
-	{
-	$FNAME = $_POST["txtfirstname"];
-	$MNAME = $_POST["txtmiddlename"];
-	$LNAME = $_POST["txtlastname"];
-	$NAME = $FNAME . " " . $MNAME . " " . $LNAME;
-	
-	$ADD = $_POST["txtaddress"];
-	$STATE = $_POST["txtstate"];
-	$DIST = $_POST["txtdistrict"];
-	$COUNTRY = $_POST["combocountry"];
-	$MADDRESS = $ADD . "," . $STATE . "," . $DIST . "," . $COUNTRY;
-	$USERNAME = $_POST["txtusername"];
-	$PASSWORD = $_POST["txtpassword"];
-	
-	
-	
-	$query="INSERT INTO u_registration (Username, Password, C_Name) VALUES ('$USERNAME','$PASSWORD','$FNAME')";
-
-if(mysqli_query($link,$query))
-{
-	echo "record inserted successfully";
-}
-else 
-{
-	echo "Error : Could not able to execute" .$query;
-	mysqli_error($query);
-	mysqli_error($link);
-}
-
-//close connection
-mysqli_close($link);
-
-	}
-?>

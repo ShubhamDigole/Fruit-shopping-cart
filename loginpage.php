@@ -1,46 +1,3 @@
-<?php
-
-
-
-include("DB_controller.php");
-session_start();
-
-if( $_SERVER["REQUEST_METHOD"] == "post")
-{	
-	$username = $_POST[txtusername];
-	$password = $_POST[txtpassword];
-	//username and password sent from user
-	$myusername = mysqli_real_escape_string($link, $username);
-	$mypassword = mysqli_real_escape_string($link, $password);
-	
-	$sql = "SELECT id FROM u_registration WHERE Username = '$myusername' and Password = '$mypassword'";
-	//$sql = "SElECT id FROM admin WHERE username = 'amar' and passcode = 'veer'";
-
-	$result = mysqli_query($link,$sql);
-	$row    = mysqli_fetch_array($result,MYSQLI_ASSOC);
-	$active = $row['active'];
-	
-	$count = mysqli_num_rows($result);
-	
-	//if result matched $myusername and $mypassword, table row must be 1 row
-	
-	if( $count == 1 )
-	{
-		session_register("txtusername");
-		$_SESSION['login'] = $myusername;
-		//header("location:welcome.php");		
-		header("location:Registration.php");
-		
-		$query="Insert into login (Username,Password) values('$username','$password')";
-	
-	$Result = mysqli_query($link,$query);
-	}
-	else
-	{	echo"error";
-		$error = "Your login Name or Password is invalid";
-	}
-}
-?>
 
 
 <!doctype html>
@@ -79,7 +36,7 @@ if( $_SERVER["REQUEST_METHOD"] == "post")
 			background:chocolate;
 		}
 		.Box{
-			
+			border:2px solid gray;
 			width: 400px;
 			position: absolute;
 			margin: auto;	
@@ -109,12 +66,12 @@ if( $_SERVER["REQUEST_METHOD"] == "post")
 
 <body>
 	<div class="Box"> 
-		<div style="width: 300px; border: solid 1px #333333; " align="left">
+		<div>
 			<div class="header">
 				<b>Login</b>
 			</div>
 				<div style="margin: 30px">
-					<form action="" method="post">
+					<form action="data2.php" method="post">
 						<p>
 						
 						  <input type="text" name="txtusername" placeholder="Username" required> <br><br>
