@@ -60,12 +60,7 @@
 	
 	  
 	    
-	    <input placeholder="Address" type="textarea" name="address" class="form-control">
-	  
-	
-
-	
-	
+	    <input placeholder="Address" type="textarea" name="address" class="form-control">	
 	  
 	    <label>City : </label>
 	    <select name="city" id="city" class="form-control">
@@ -193,7 +188,7 @@
 		var pass = document.getElementById("password").value;
 		var out = document.getElementById("out");
 	console.log(pass);
-		out.innerHTML = pass;
+//		out.innerHTML = pass;
 }
 		</script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
