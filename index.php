@@ -36,7 +36,7 @@ include("navbar.php");
 		
 		.container-fluid {
 			display: inline-block;
-			margin: 10px;
+/*			margin: 10px;*/
 			background: rgba(0, 0, 0, .6);
 		}
 		
@@ -117,9 +117,10 @@ include("navbar.php");
 		
 		require_once( "DB_controller.php" );
 	
-		$query = "SELECT * FROM fruitdata WHERE id";
+		$query = "SELECT * FROM fruitdata";
 		$sql = mysqli_query( $link, $query );
 			$count = mysqli_num_rows($sql);
+		
 		while ( $row = mysqli_fetch_array( $sql ) ) {
 				$id = $row[0];
 			
@@ -139,12 +140,18 @@ include("navbar.php");
 				
 				<h6 class="card-text">Left In Stock:<?php echo $row[4];?></h6>
 				<?php
-					if($user != null){
+				
 
 			
 					
+				
+				
+				if($user != null){			
 				echo '<a class="btn btn-primary card-title" id="btn" href="buynow.php?link=' . $id . '">Buy Now</a>';
-					}
+				}
+				else{
+					echo '<a class="btn btn-primary card-title" id="btn" href="loginpage.php">Buy Now</a>';
+				}
 				?>
 			
 			</div>
@@ -156,7 +163,7 @@ include("navbar.php");
 	
 		}
 
-
+					
 		?>
 		
 	</div>

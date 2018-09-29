@@ -33,7 +33,7 @@ if( isset($_POST['username']))
 		header("location:index.php");
 		echo"login successful";
 	 	$query="Insert into login (Username,Password) values('$username','$password')";
-		echo $_SESSION['login'];
+		//echo $_SESSION['login'];
 		$Result = mysqli_query($link,$query);
 		
 	}
