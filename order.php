@@ -82,30 +82,32 @@
       <td><?php echo $row[2];?></td>
       <td><?php echo $row[3];?></td>
 	<td><?php echo $row[4];?></td>
-	 <td><button id="delete" class="btn btn-danger" onclick="delete()">X</button></td>	
+	 <td><a role="button" href="?action=remove" id="delete" class="btn btn-danger" name="btn" onClick="delete()">X</a></td>	
     </tr>
 	
 	
 <?php
-		}
-	
-	?>	</table>
 
-	<script>
-	function delete(){	
-	<?php	
+	if($action == 'remove'){	
+		
 	$delete = "DELETE FROM $username WHERE id = '$id'";
 	
 		$sql = mysqli_query( $link, $delete);
 		
-	
-		?>
-		console.log("clicked");
+		
+		}
+		else{
 
+			echo "error";
+		}
+	
 	}
-	
+	?>	</table>
 
 	
-	</script>
+
+
+	
+	
 </body>
 </html>
