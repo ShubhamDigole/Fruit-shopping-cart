@@ -43,7 +43,25 @@
 
 	
 	
-		<?php
+
+
+			
+		<table class="table col-md-11 table-bordered">
+		
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">No.</th>
+      <th scope="col">Fruit Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+	 <th scope="col">Total</th>
+		<th scope="col">Total</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+  
+  <?php
 			include("navbar.php");
 			$username = $_SESSION['login'];
 			$id = 0;
@@ -58,21 +76,6 @@
 		
 				
 		?>
-
-
-			
-		<table class="table col-md-11 table-bordered">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">No.</th>
-      <th scope="col">Fruit Name</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Price</th>
-	 <th scope="col">Total</th>
-		<th scope="col">Total</th>
-    </tr>
-  </thead>
-  <tbody>
     <tr>
       <th scope="row"><?php echo $id;?></th>
       <td><?php echo $row[1];?></td>
@@ -81,12 +84,13 @@
 	<td><?php echo $row[4];?></td>
 	 <td><button id="delete" class="btn btn-danger" onclick="delete()">X</button></td>	
     </tr>
-		</table>
-
+	
+	
 <?php
 		}
 	
-	?>
+	?>	</table>
+
 	<script>
 	function delete(){	
 	<?php	

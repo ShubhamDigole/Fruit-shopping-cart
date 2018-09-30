@@ -4,11 +4,10 @@
 
 
 
-		$FNAME = $_POST["fname"];
-		$MNAME = $_POST["mname"];
-		$LNAME = $_POST["lname"];
-		$NAME = $FNAME. " " . $MNAME . " " . $LNAME;
+		$NAME = $_POST["fname"];
 		
+		
+		$Date = date("Y/m/d");
 		$ADDRESS = $_POST["address"];
 		$CITY = $_POST["city"];
 		$DISTRICT = $_POST["district"];
@@ -22,10 +21,10 @@
 		$PHONE = $_POST["phoneno"];
 		$USERNAME = $_POST["username"];
 		$PASSWORDS = $_POST["pass"];
-		
+		echo $Date;
 
-		$create = "CREATE TABLE  $USERNAME (id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, Fruitname varchar(30) NOT NULL, Quantity INT(10), Price INT(30) NOT NULL, Total int(30) NOT NULL)";
-		$query="INSERT INTO u_registration(Username, Passwords, C_Name, Address, email, DOB, Gender, Age, Phone_no) VALUES ('$USERNAME','$PASSWORDS','$NAME','$ADD','$EMAIL','$DOB','$GENDER','$AGE','$PHONE')";
+		$create = "CREATE TABLE  $USERNAME (id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, Fruitname varchar(30) NOT NULL, Quantity INT(10), Price INT(30) NOT NULL, Total int(30) NOT NULL),Date date()";
+		$query="INSERT INTO u_registration(Username, Passwords, C_Name, Address, email, DOB, Gender, Age, Phone_no, date) VALUES ('$USERNAME','$PASSWORDS','$NAME','$ADD','$EMAIL','$DOB','$GENDER','$AGE','$PHONE','$Date')";
 			if(mysqli_query($link,$create))
 			{
 				
