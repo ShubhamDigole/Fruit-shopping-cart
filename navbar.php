@@ -72,13 +72,13 @@ session_start();
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <body>
 	
-	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark"> <a class="navbar-brand" href="#">FruitZOA</a>
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark"> <a class="navbar-brand" href="index.php">FruitZOA</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent1">
 		<ul class="navbar-nav mr-auto">
-		  <li class="nav-item active"> <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> </li>
+		  <li class="nav-item active"> <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a> </li>
 		  <li class="nav-item active"> <a class="nav-link" href="#">About Us <span class="sr-only">(current)</span></a> </li>
-		  <li class="nav-item active"> <a class="nav-link" href="#">Contact Us <span class="sr-only">(current)</span></a> </li>
+		  <li class="nav-item active"> <a class="nav-link" href="ContactUs.php">Contact Us <span class="sr-only">(current)</span></a> </li>
 		  <li class="nav-item active"> <a class="nav-link" href="#">Sort <span class="sr-only">(current)</span></a> </li>
 
 		</ul>
@@ -112,20 +112,21 @@ session_start();
 
 		 
 			
-				<div class="dropdown show" id="log"> <p style="color:white" id="name" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi,
-						<?php echo $arr[0];	}?><img class="userimg" src="img/apricot.jpg">  </p>	
-      <div class="dropdown-menu">
-        <h6 class="dropdown-header">
-		  <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Profile</a> 
-		  <div class="dropdown-divider"></div>
-		  <a class="dropdown-item" href="#">Orders</a>
-			<div class="dropdown-divider"></div>
-			
-        	 <a class="dropdown-item" href="logout.php">Log out</a>
-         </div>
- 
-			</div>
+		<div class="dropdown show log"> 
+			<p style="color:white" id="name" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hi,
+			<?php echo $arr[0];	}?><img class="userimg" src="img/apricot.jpg">  </p>	
+		
+		 <div class="dropdown-menu">
+				<h6 class="dropdown-header">
+			  	<div class="dropdown-divider"></div>
+				<a class="dropdown-item" href="#">Profile</a> 
+				<div class="dropdown-divider"></div>
+			  	<a class="dropdown-item" href="#">Orders</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" href="logout.php">Log out</a>
+		  </div>
+
+		</div>
 
 		</form>
 			<a href="loginpage.php"><button id="login" class="nav-item btn btn-danger"> Login</button></a>
@@ -140,7 +141,7 @@ session_start();
 		?>
 	<script>
 		document.getElementById( "login" ).style.display = "block";
-		document.getElementsByClassName( "dropdown show" ).style.display = "none";
+		document.getElementsByID("log").style.display = "none";
 	</script>
 	<?php
 	} else {
@@ -148,11 +149,12 @@ session_start();
 		?>
 	<script>
 		document.getElementById( "login" ).style.display = "none";
-		document.getElementsByClassName( "dropdown show" ).style.display = "block";
+		document.getElementsByClassName( "log" ).style.display = "block";
 	</script>
 	<?php
 
 	}
+	
 	?>
 
 </body>

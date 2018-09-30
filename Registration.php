@@ -37,28 +37,10 @@
 <body>
 <div class="head"> REGISTRATION</div>
 	<form name="registration" method="post" action="data.php" class="form-group" >
-
-
-	    
+  
 	     
-	    <input placeholder="First Name" type="text" name="fname" class="form-control">
+	    <input placeholder="Full Name" type="text" name="fname" class="form-control">
 	 
-	    
-	    <input placeholder="Middle Name" type="text" name="mname" class="form-control">
-	  
-
-
-	
-	
-	  
-	    
-	    <input placeholder="Last Name" type="text" name="lname" class="form-control">
-	  
-	
-
-	
-	
-	  
 	    
 	    <input placeholder="Address" type="textarea" name="address" class="form-control">	
 	  
@@ -79,9 +61,6 @@
 			  console.log(city);
 		  
 		  </script>
-	  
-	
-
 	
 	
 	  
@@ -187,7 +166,7 @@
 		function myFunction(){
 		var pass = document.getElementById("password").value;
 		var out = document.getElementById("out");
-	console.log(pass);
+		console.log(pass);
 //		out.innerHTML = pass;
 }
 		</script>
