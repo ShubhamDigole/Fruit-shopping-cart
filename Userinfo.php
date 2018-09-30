@@ -11,9 +11,19 @@ include("navbar.php");
 </head>
 
 <body>
-<h5> RECORD</h5>
-	<input type="text" name="username" placeholder="Enter username";
+	<form name="profile" method="get" action="userinfo.php">
 	
+<h5> Profile </h5>
+		<?php 
+		$query = "SELECT * FROM u_registration WHERE Username = '$user'";
+	  	
+		$sql = mysqli_query($link,$query);
+		
+		$sql = mysqli_query($link,$query);
+
+		$rows = mysqli_fetch_array($sql);
+		?>
+	</form>
 	
 
 
