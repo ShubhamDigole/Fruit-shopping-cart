@@ -151,8 +151,7 @@ session_start();
 		document.getElementById( "login" ).style.display = "none";
 		document.getElementsByClassName( "log" ).style.display = "block";
 	</script>
-	<?php
-
+	<?php  
 	}
 	
 	?>
