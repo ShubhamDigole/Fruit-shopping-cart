@@ -33,10 +33,14 @@ include("navbar.php");
 	}
 
 	</style>
+	<script src="jspdf.min.js"></script>	
 	</head>
 
 <body>
-	<br><br><br><BR>
+
+<br><br><br><br><br>	
+<button onclick="generate()">Generate PDF</button>
+	<div class="html-2-pdfwrapper">
 	<center><B><h1>BILL</h1></B></center>
 	<?php 
 		$query = "SELECT * FROM u_registration WHERE Username = '$user'";
@@ -100,9 +104,13 @@ include("navbar.php");
 	<td><?php echo $row[4];?></td>
 	 	
     </tr>
+
 		</table>
-	
+
 	</div>
+	
 	<footer><center>Thanks For Shopping With Us..!</center></footer>
+	</div>
+	
 </body>
 </html>

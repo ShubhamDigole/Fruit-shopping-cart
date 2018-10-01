@@ -7,13 +7,16 @@ session_start();
 
 if( isset($_POST['username']))
 {	
-	$username = $_POST['username'];
-	$password = $_POST['password'];
+	$username = stripslashes($_REQUEST['username']);
+	$password = stripslashes($_REQUEST['password']);
+	
 	//username and password sent from user
-	$user = mysqli_real_escape_string($link, $username);
+	
+	 $user = mysqli_real_escape_string($link, $username);
 	$pass = mysqli_real_escape_string($link, $password);
 	
-	$sql = "SELECT * FROM u_registration WHERE Username = '$user' and Passwords = '$pass'";
+
+	$sql = "SELECT * FROM u_registration WHERE Username = '$username' and Passwords = '$password'";
 
 	//$sql = "SElECT id FROM admin WHERE username = 'amar' and passcode = 'veer'";
 	
@@ -38,9 +41,7 @@ if( isset($_POST['username']))
 		
 	}
 	else
-	{	
-		
-		
+	{		
 		echo	 "Your login Name or Password is invalid";
 	}
 }

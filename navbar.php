@@ -121,7 +121,7 @@ session_start();
 			  	<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="#">Profile</a> 
 				<div class="dropdown-divider"></div>
-			  	<a class="dropdown-item" href="#">Orders</a>
+			  	<a class="dropdown-item" href="order.php">Orders</a>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="logout.php">Log out</a>
 		  </div>

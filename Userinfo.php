@@ -5,28 +5,83 @@ include("navbar.php");
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Untitled Document</title>
-<link href="../../../Users/Admin/Documents/Unnamed Site 2/css/bootstrap-4.0.0.css" rel="stylesheet" type="text/css">
+	<style>
+		.container-fluid{
+			width: 2000;
+			margin-top: 20px;
+			
+			
+		}
+		
+		.form-control{
+			margin: 10px;
+			width: 300px;
+		}
+		.container{
+			float: left;
+			/*margin-top: 10px;*/
+			margin-left: 20px;
+			background: rgba(185,175,175,1.00);
+			border: thick;
+			width: 400px;
+			padding: 20px;
+		}
+	</style>
 </head>
 
 <body>
-	<form name="profile" method="get" action="userinfo.php">
 	
-<h5> Profile </h5>
-		<?php 
-		$query = "SELECT * FROM u_registration WHERE Username = '$user'";
-	  	
-		$sql = mysqli_query($link,$query);
+	<br>
+	<div class="container-fluid">
+		<div class="container col-sm-3">
+			<form name="container1" method="get" action="" class="form-group col-md-4">
+			<?php
+			require_once("DB_controller.php");
+			$user=$_SESSION['login'];
+			$query="select * from u_registration where Username='$user'";
+			$sql = mysqli_query($link,$query);
 		
-		$sql = mysqli_query($link,$query);
+			$sql = mysqli_query($link,$query);
 
-		$rows = mysqli_fetch_array($sql);
+			$rows = mysqli_fetch_array($sql);
 		?>
-	</form>
+			<lable>Name : </lable><input type="text" name="name" class="form-control" value="<?php echo $rows[3] ?>">
+			<lable>Username : </lable><input type="text" name="username" class="form-control" value="<?php echo $rows[1] ?>">
+			<lable>Address : </lable><input type="text" name="address" class="form-control" value="<?php echo $rows[4] ?>">
+			<lable>Email : </lable><input type="text" name="email" class="form-control" value="<?php echo $rows[5] ?>">
+			<lable>Date of birth : </lable><input type="text" name="dob" class="form-control" value="<?php echo $rows[6] ?>">
+			<lable>Phone No. : </lable><input type="text" name="phone" class="form-control" value="<?php echo $rows[9] ?>">
+			<button type="submit" class="form-control btn btn-primary" name="submit">Edit</button>
+			</form>
+
+		</div>
+		
+		<div class="container col-sm-3">
+			<form name="container1" method="post" action="" class="form-group col-md-4">
+			<?php
+			require_once("DB_controller.php");
+			$user=$_SESSION['login'];
+			$query="select * from u_registration where Username='$user'";
+			$sql = mysqli_query($link,$query);
+		
+			$sql = mysqli_query($link,$query);
+
+			$rows = mysqli_fetch_array($sql);
+		?>
+			<lable>Name : </lable><input type="text" name="name" class="form-control" value="<?php echo $rows[3] ?>">
+			<lable>Username : </lable><input type="text" name="username" class="form-control" value="<?php echo $rows[1] ?>">
+			<lable>Address : </lable><input type="text" name="address" class="form-control" value="<?php echo $rows[4] ?>">
+			<lable>Email : </lable><input type="text" name="email" class="form-control" value="<?php echo $rows[5] ?>">
+			<lable>Date of birth : </lable><input type="text" name="dob" class="form-control" value="<?php echo $rows[6] ?>">
+			<lable>Phone No. : </lable><input type="text" name="phone" class="form-control" value="<?php echo $rows[9] ?>">
+			<button type="submit" class="form-control btn btn-primary" name="submit">Edit</button>
+			</form>
+		</div>
+		
+	</div>
 	
-
-
-</div>
 </body>
 </html>
+

@@ -5,8 +5,8 @@
 			$NAME = $_POST['fruitname'];
 			$DESCRIPTION = $_POST['description'];
 			$URL = $_POST['file'];
-			$PRICE = $_POST['quantity'];
-			$QUANTITY = $_POST['price'];
+			$PRICE = $_POST['price'];
+			$QUANTITY = $_POST['quantity'];
 		
 		
 		$query="INSERT INTO fruitdata(Name,Discription,ImgURl,Quantity,Price) VALUES ('$NAME','$DESCRIPTION','http://localhost/Fruit-shopping-cart/img/$URL',$QUANTITY,$PRICE)";

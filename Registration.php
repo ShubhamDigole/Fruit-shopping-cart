@@ -42,15 +42,6 @@
 	    <input placeholder="Full Name" type="text" name="fname" class="form-control">
 	 
 	    
-<<<<<<< HEAD
-=======
-	    <input placeholder="Middle Name" type="text" name="mname" class="form-control">
-	  
-	    
-	    <input placeholder="Last Name" type="text" name="lname" class="form-control">
-	  
-	    
->>>>>>> eccb3b7d456f4213370167ea4dbe242331c78c95
 	    <input placeholder="Address" type="textarea" name="address" class="form-control">	
 	  
 	    <label>City : </label>

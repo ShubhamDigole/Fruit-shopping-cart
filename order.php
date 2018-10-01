@@ -1,5 +1,6 @@
 <?php
 	require_once("DB_controller.php");
+	include("navbar.php");
 	
 ?>
 
@@ -62,7 +63,7 @@
   <tbody>
   
   <?php
-			include("navbar.php");
+			
 			$username = $_SESSION['login'];
 			$id = 0;
 			$display = "SELECT * from $username";
@@ -75,34 +76,20 @@
 			$id = $row[0];
 		
 				
-		?>
-    <tr>
-      <th scope="row"><?php echo $id;?></th>
-      <td><?php echo $row[1];?></td>
-      <td><?php echo $row[2];?></td>
-      <td><?php echo $row[3];?></td>
-	<td><?php echo $row[4];?></td>
-	 <td><a role="button" href="?action=remove" id="delete" class="btn btn-danger" name="btn" onClick="delete()">X</a></td>	
-    </tr>
-	
-	
-<?php
+echo ' <tr >
+      <th class="record" id="record-">',$id,'</th>
+      <td> ',$row[1],'</td>
+      <td>',$row[2],'</td>
+      <td>',$row[3],'</td>
+	<td>',$row[4],'</td>
+	 <td><a role="button" href="delete.php?delete=',$row['0'],'"  class="btn btn-danger delete" name="delete">X</a></td>	
+    </tr>';
 
-	if($action == 'remove'){	
-		
-	$delete = "DELETE FROM $username WHERE id = '$id'";
-	
-		$sql = mysqli_query( $link, $delete);
-		
-		
-		}
-		else{
-
-			echo "error";
-		}
 	
 	}
-	?>	</table>
+	?>
+	
+		</table>
 
 	
 
