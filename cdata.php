@@ -6,7 +6,7 @@
 	$subject =$_POST['subject'];
 	$number = $_POST['phoneno'];
 //	$headers = "From:".$from;
-	$headers = "From:".$to;
+	$headers = "From:".$from;
 	$message = $_POST['msg'];
 	$contact="INSERT INTO contactus(Name,Email,Phone,Subject,Message) VALUES ('$name','$from','$number','$subject','$message')";
 				if(mysqli_query($link,$contact))

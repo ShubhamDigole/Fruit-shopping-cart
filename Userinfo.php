@@ -58,30 +58,51 @@ include("navbar.php");
 
 		</div>
 		
-		<div class="container col-sm-3">
+		<div class="container col-sm-3" id="danger">
 			<form name="container1" method="post" action="" class="form-group col-md-4">
+			
+			<lable>Name : </lable><input type="text" name="name" class="form-control">
+			<lable>Username : </lable><input type="text" name="username" class="form-control">
+			<lable>Address : </lable><input type="text" name="address" class="form-control">
+			<lable>Email : </lable><input type="text" name="email" class="form-control">
+			<lable>Date of birth : </lable><input type="text" name="dob" class="form-control">
+			<lable>Phone No. : </lable><input type="text" name="phone" class="form-control">
+			<button type="submit" class="form-control btn btn-primary" name="submit" onClick="save()">Save</button>
+																					
 			<?php
+			function save(){
 			require_once("DB_controller.php");
+			$id = $_SESSION['login'] ;
 			$user=$_SESSION['login'];
-			$query="select * from u_registration where Username='$user'";
-			$sql = mysqli_query($link,$query);
+			$name=$_POST['name'];
+			$username=$_POST['username'];
+			$address=$_POST['address'];
+			$email=$_POST['email'];
+			$dob=$_POST['dob'];
+			$phone=$_POST['phone'];
 		
-			$sql = mysqli_query($link,$query);
+			$sql = "UPDATE u_registration SET C_Name='$name', Username='$username', DOB='$dob', Address='$address', email='$email', Phone_no='$phone' WHERE id='$id'"; 
+	
+			if(mysqli_query($link,$sql))
+			{
+				header("location:userinfo.php");
+				echo "record inserted successfully";
+			}	
+			else 
+			{
+				echo "Error : Could not able to execute";
+				mysqli_error($sql);
+				
+				mysqli_error($link);
 
-			$rows = mysqli_fetch_array($sql);
-		?>
-			<lable>Name : </lable><input type="text" name="name" class="form-control" value="<?php echo $rows[3] ?>">
-			<lable>Username : </lable><input type="text" name="username" class="form-control" value="<?php echo $rows[1] ?>">
-			<lable>Address : </lable><input type="text" name="address" class="form-control" value="<?php echo $rows[4] ?>">
-			<lable>Email : </lable><input type="text" name="email" class="form-control" value="<?php echo $rows[5] ?>">
-			<lable>Date of birth : </lable><input type="text" name="dob" class="form-control" value="<?php echo $rows[6] ?>">
-			<lable>Phone No. : </lable><input type="text" name="phone" class="form-control" value="<?php echo $rows[9] ?>">
-			<button type="submit" class="form-control btn btn-primary" name="submit">Edit</button>
+			}
+  			mysqli_close($link);
+			}
+			?>
 			</form>
 		</div>
 		
 	</div>
 	
 </body>
-</html>
-
+</html></div>
