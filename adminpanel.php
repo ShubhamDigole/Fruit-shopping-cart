@@ -1,63 +1,97 @@
-	<?php 
+	 <?php 
 	include("navbar.php")
 		?>
-	<!DOCTYPE html>
-	<html>
+	
+	
+	
+<html>
 	<head>
 
 		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Admin Panel</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<li id="id"nk rel="stylesheet" type="text/css" media="screen" href="main.css" />
+		<link id="id" rel="stylesheet" type="text/css" media="screen" href="main.css" />
 		<script src="main.js"></script>
 		<style>
-
-			.width{position:absolute;
-				text-overflow: hidden;
-				padding-top: 30px;
-				margin-top: 40px;
-				height: 100%;
-				background: rgba(0,0,0,.5);
-				width: 250px;
-				transition:1s all ease;
+			.container-fluid{
+		
+			margin-top:40px;
+			padding:0px;
+		}
+				.container{
+				padding: 0;
+				margin: 0;
+				float: right;
+				display: inline-block;
+				
 			}
-			
+			#sidepanel{
+				border-right:1px solid gray;	
+				position: fixed;
+				overflow: hidden;
+				transition: 1s all;
+				height: 100%;				
+				
+				width: 250px;				
+			}
 			ul{
+				padding: 0px;
+			}
+			#id{
+				
 				text-align: center;
-				padding-left: 0px;	
-				text-decoration: none;
-				list-style-type: none;
+				border-bottom: 1px solid black;
+				list-style: none;
+				padding-bottom: 10px;
+				padding-top: 10px;
+			
+			}
+			#side{
+				display:block;
+				z-index: 500;
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				margin-left: 240px;
+				position: fixed;
+				width: 20px;
+				height: 30px;
+				background: red;
+				transition: 1s all;	
+				
+			}
+			#data{
+				max-width: 81%;	
+				padding: 12px;
+				margin-left: 250px;
+				transition: 1s all;
+				position:absolute;
+				
 			}
 			
-			#id{	padding: 10px 0 10px 0;
-				color: white;
-				border-bottom:2px solid #514A4B;
+			.graph{
+				background: linear-gradient(red,blue);
+				height: 600px;
+			}	
+			#fruit{
+				position: relative;
+				
+				height: 60%;
+				width: 30px;
+				background: black;
+				margin-left: 10px;
+				transition: 1s all;
 			}
-			.arrow{z-index:100;
-				background: red;
-				top:0;
-				bottom:0;
-				position:absolute;
-				margin:auto;
-				margin-left:225px;
-				width:40px;
-				height:60px;
-				border-radius: 50%;
-				font-size: 60px;	
-				color:white;
-				transition:1s all ease;
-			}
-			.container{
-
-				background:red;
-			}
-		</style>
+		</style>	
 	</head>
 	<body>
-
-	<div class="width" id="width">
-		<ul>
+		
+		<div class="container-fluid">
+		
+		  <div class="conatiner" id="sidepanel">	
+			  
+				<ul>
 			<li id="id">stats</li>
 			<li id="id">Inbox</li>
 			<li id="id">orders</li>
@@ -68,38 +102,60 @@
 
 
 		</ul>
-
-		
+			</div>
+				<div id="side" class="container" onclick="hide()">></div>
+				<div class="container" id="data">
+					<input type="text" id="val"><button onclick="run()">submit</button>
+					
+					<div class="graph">
+					<div id="fruit"></div>
+					
+					
+					
+					</div>
+					
+					
+			
+				</div>
 		</div>
-		<div class="arrow" onclick="hide()" id="arrow"></div>
-		<div class="container">dsjasfafhsdhfhjhgjghjfshgfhgjhfjdsfhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssauifsdfahdjshhfsgfhgfdhgsfjdk</div>
-		
-		
+	
 		<script>
 			var a=4;
+			function run(){
+				var val=document.getElementById('val').value;
+				var fruit=document.getElementById('fruit');
+				fruit.style.height = val+"%";
+				console.log(val);
+			}
 			function hide(){
-				
-				var btn = document.getElementById('arrow');		
-				var sidebar = document.getElementById('width');
+				var text = document.getElementById('side');	 
+				var btn = document.getElementById('data');		
+				var sidebar = document.getElementById('sidepanel');
 				
 			
 				if(a>3){
 					
 					sidebar.style.width = "0px";
-					btn.style.marginLeft = "-25px";
+					text.style.marginLeft = "0px";
+				btn.style.marginLeft = "0px";
 					a=2;
 					
 		
 				}
 				else{
-					btn.style.marginLeft = "225px";
+				
 					sidebar.style.width = "250px";
-					a=5;	
+					a=5;					
+					text.style.marginLeft = "250px";
+					btn.style.marginLeft = "250px";
+
 				}
 				console.log(a);
 
 			}
 		</script>
 		
+		
 	</body>
-	</html>
+
+</html>

@@ -76,14 +76,14 @@
 			$id = $row[0];
 		
 				
-echo ' <tr >
-      <th class="record" id="record-">',$id,'</th>
-      <td> ',$row[1],'</td>
-      <td>',$row[2],'</td>
-      <td>',$row[3],'</td>
-	<td>',$row[4],'</td>
-	 <td><a role="button" href="delete.php?delete=',$row['0'],'"  class="btn btn-danger delete" name="delete">X</a></td>	
-    </tr>';
+	echo ' <tr >
+		  <th class="record" id="record-">',$id,'</th>
+		  <td> ',$row[1],'</td>
+		  <td>',$row[2],'</td>
+		  <td>',$row[3],'</td>
+		<td>',$row[4],'</td>
+		 <td><a role="button" href="delete.php?delete=',$row['0'],'"  class="btn btn-danger delete" name="delete">X</a></td>	
+		</tr>';
 
 	
 	}
