@@ -71,25 +71,60 @@
 			}
 			
 			.graph{
-				transform: rotateX(180deg);
-				background: linear-gradient(red,blue);
+				/* transform: rotateX(180deg); */
+				/* background: linear-gradient(red,blue); */
 				height: 600px;
+				position: relative;
+				padding: 5px;
 			}	
 			.fruit{
+				text-align:center;
 				border-bottom:2px solid green;
-				margin-left: 10px;
-				transform: rotateX(180deg);
+				
+				/* transform: rotateX(180deg); */
 				float: left;
 				height: 15%;
-				width: 30px;
+				width: 40px;
 				background: black;
-				margin-left: 0px;
+				margin-left: 10px;
 				transition: 1s all;
 				color:white;
-			}
-			.jan{
-				margin-left: 10px;
 				
+			}
+			.circle{
+				z-index: 1100;
+				overflow: hidden;
+				border-radius: 50%;
+				position: relative;
+				margin: 10px;
+				background: green;
+				height: 300px;
+				width:300px;
+			}
+			.inner{
+				right: 0;
+				left:0;
+				/* border: 10px solid green; */
+				top: 0;
+				
+				transition: 1s all;
+				margin: auto;
+				position: absolute;
+				height:150px;
+				width:300px;
+				background: red;
+				z-index: -100;
+			}
+			.data{
+				
+				text-align:center;
+				margin-top: 140px;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				left: 0;
+				
+
 			}
 		</style>	
 	</head>
@@ -108,25 +143,6 @@
 			<li id="id">user's list</li>
 
 
-
-		</ul>
-			</div>
-				<div id="side" class="container" onclick="hide()">></div>
-				<div class="container" id="data">
-					<input type="number" id="val"><button onclick="run()">submit</button>
-					
-					<div class="graph">
-						
-					<div class="jan">=
-					<div class="fruit" id="fruit"></div>
-					<div class="fruit" id="fruits"></div>
-					</div>
-					</div>
-					
-					
-			
-				</div>
-		</div>
 		<?php
 		$query = "SELECT * FROM fruitdata ";
 		$sql = mysqli_query( $link, $query );
@@ -164,20 +180,42 @@
 		$sold = $totalitems / $percentage;
 		//echo $sold;
 		?>
+
+		</ul>
+			</div>
+
+				<div id="side" class="container" onclick="hide()">></div>
+				<div class="container" id="data">
+					<input type="number" id="val"><button onclick="run()">submit</button>
+					
+					<div class="graph">
+						
+					
+						<div class="circle">
+							<div class="inner" id="sold"></div>
+							<div class="data" id="sell">s</div>
+				
+						</div>
+					</div>
+					
+					
+			
+				</div>
+		</div>
 		<script>
 			var a=4;
 			function myFunction(){
 				var val = parseInt(" <?php echo $remain?>");
 				var val2 = parseInt(" <?php echo $sold?>");
-				//var val=document.getElementById('val').value;
-				var fruit=document.getElementById('fruit');
+				var val=document.getElementById('val').value;
+				var fruit=document.getElementById('sold');
 				fruit.style.height = val+"%";
-				
+				var sold = document.getElementById('sell');
 				var fruits=document.getElementById('fruits');
 				fruits.style.height = val2+"%";
 				
 				//alert("button clicked");
-				fruit.innerHTML = val + "%";
+				sold.innerHTML = val + "%";
 				fruits.innerHTML = val2 + "%";
 			}
 			function hide(){
