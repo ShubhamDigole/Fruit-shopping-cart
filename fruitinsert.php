@@ -36,7 +36,8 @@
  	
     <input type="file" name="file">	
 	<br>
-	<input type="text" class="form-control" id="exampleInputEmail1" name="price" placeholder="price">
+	<input type="text" class="form-control" id="exampleInputEmail1" name="price" placeholder="Selling Price">
+	<input type="text" class="form-control" id="exampleInputEmail1" name="pur_price" placeholder="Purchase Price">
 	<input type="text" class="form-control" id="exampleInputEmail1" name="quantity" placeholder="Quantity">
 	
     

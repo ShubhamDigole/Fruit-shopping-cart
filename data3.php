@@ -7,9 +7,9 @@
 			$URL = $_POST['file'];
 			$PRICE = $_POST['price'];
 			$QUANTITY = $_POST['quantity'];
+			$Purchase = $_POST['pur_price'];
 		
-		
-		$query="INSERT INTO fruitdata(Name,Discription,ImgURl,Quantity,Price) VALUES ('$NAME','$DESCRIPTION','http://localhost/Fruit-shopping-cart/img/$URL',$QUANTITY,$PRICE)";
+		$query="INSERT INTO fruitdata(Name,Discription,ImgURl,Quantity,Price,pur_price) VALUES ('$NAME','$DESCRIPTION','http://localhost/Fruit-shopping-cart/img/$URL','$QUANTITY','$PRICE','$Purchase')";
 
 			if(mysqli_query($link,$query))
 			{

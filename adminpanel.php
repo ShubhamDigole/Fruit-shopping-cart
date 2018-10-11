@@ -23,7 +23,7 @@
 				padding: 0;
 				margin: 0;
 				float: right;
-				display: inline-block;
+				
 				
 			}
 			#sidepanel{
@@ -71,21 +71,29 @@
 			}
 			
 			.graph{
+				transform: rotateX(180deg);
 				background: linear-gradient(red,blue);
 				height: 600px;
 			}	
-			#fruit{
-				position: relative;
-				
-				height: 60%;
+			.fruit{
+				border-bottom:2px solid green;
+				margin-left: 10px;
+				transform: rotateX(180deg);
+				float: left;
+				height: 15%;
 				width: 30px;
 				background: black;
-				margin-left: 10px;
+				margin-left: 0px;
 				transition: 1s all;
+				color:white;
+			}
+			.jan{
+				margin-left: 10px;
+				
 			}
 		</style>	
 	</head>
-	<body>
+	<body onload="myFunction()">
 		
 		<div class="container-fluid">
 		
@@ -105,27 +113,72 @@
 			</div>
 				<div id="side" class="container" onclick="hide()">></div>
 				<div class="container" id="data">
-					<input type="text" id="val"><button onclick="run()">submit</button>
+					<input type="number" id="val"><button onclick="run()">submit</button>
 					
 					<div class="graph">
-					<div id="fruit"></div>
-					
-					
-					
+						
+					<div class="jan">=
+					<div class="fruit" id="fruit"></div>
+					<div class="fruit" id="fruits"></div>
+					</div>
 					</div>
 					
 					
 			
 				</div>
 		</div>
-	
+		<?php
+		$query = "SELECT * FROM fruitdata ";
+		$sql = mysqli_query( $link, $query );
+		$totalitems =0;
+		$totalpurchase=0;
+		$totalsell = 0;
+		$totalpurchaseitems = 0;
+		$totalremain = 0;
+		while($row = mysqli_fetch_array( $sql ))
+		{
+		$totalpurchaseitems = $totalpurchaseitems + $row[4] + $row[8];
+		$totalitems = $totalitems + $row[8];
+		$totalremain = $totalremain + $row[4];
+		$totalsell = $totalsell + ($row[6] * $row[8]);
+		$totalpurchase = $totalpurchase + ($row[7] * $row[8]);	
+		}
+//		echo $totalitems;
+//		echo "<br>";
+//		echo $totalpurchase;
+//		echo "<br>";
+//		echo $totalsell;
+//		
+		$totalprofit = $totalsell - $totalpurchase;
+//		echo "<br>";
+//		echo $totalprofit;
+//		echo "<br>";
+//		echo $totalpurchaseitems;
+		$percentage = $totalpurchaseitems/100;
+//		echo "<br>";
+//		echo $percentage;
+//		echo "<br>";
+		$remain = $totalremain/$percentage;
+		//echo $remain;
+		//echo "<br>";
+		$sold = $totalitems / $percentage;
+		//echo $sold;
+		?>
 		<script>
 			var a=4;
-			function run(){
-				var val=document.getElementById('val').value;
+			function myFunction(){
+				var val = parseInt(" <?php echo $remain?>");
+				var val2 = parseInt(" <?php echo $sold?>");
+				//var val=document.getElementById('val').value;
 				var fruit=document.getElementById('fruit');
 				fruit.style.height = val+"%";
-				console.log(val);
+				
+				var fruits=document.getElementById('fruits');
+				fruits.style.height = val2+"%";
+				
+				//alert("button clicked");
+				fruit.innerHTML = val + "%";
+				fruits.innerHTML = val2 + "%";
 			}
 			function hide(){
 				var text = document.getElementById('side');	 

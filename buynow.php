@@ -116,17 +116,21 @@ include("navbar.php");
 		$quantity = $_POST['quantity'];
 		$price = $row[5];
 		$total = $price * $quantity;
+		$remain= $row[7] + $quantity;
+		$sell = $row[5] * $remain;	
+		$purchase = $row[6] * $remain;
+		$profit = $sell - $purchase;
 		$user = $_SESSION['login'];
 		$datai = "INSERT INTO $user (Fruitname,Quantity,Price,Total) VALUES ('$row[1]','$quantity','$price','$total')";
 		if($quantity<$row[4]){
-
+		
 		if($quantity != 0){
 		if(mysqli_query($link,$datai))
 		{
 		
 		
 		$newQuantity = $row[4] - $quantity;
-		$insert = "UPDATE `fruitdata` SET `Quantity` = '$newQuantity' WHERE `fruitdata`.`id` = $row[0]";
+		$insert = "UPDATE `fruitdata` SET `Quantity` = '$newQuantity', `sold_items` = '$remain', `profit` = '$profit' WHERE `fruitdata`.`id` = $row[0]";
 			
 		if(mysqli_query($link,$insert)){
 		?><script>
@@ -137,18 +141,19 @@ include("navbar.php");
 			}
 
 			else{
-
+				echo "sommetung";
 				
 			}
 		}
-		
-		}
-		
-		else
+			else
 		{
 			mysqli_error($datai);
 			echo "something went wrong";
 		}
+		
+		}
+		
+		
 		}
 		else{
 			?>
