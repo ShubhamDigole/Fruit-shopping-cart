@@ -13,7 +13,7 @@
 
 			if(mysqli_query($link,$query))
 			{
-				header("location:fruitinsert.php");
+				header("location:adminpanel.php");
 				echo "record inserted successfully";
 			}	
 			else 
