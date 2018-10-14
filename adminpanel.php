@@ -129,6 +129,14 @@
 			
 			margin: 10px;
 		}
+		.block{
+			margin-top:75px;
+			float:left;
+			position:relative;
+			width:250px;
+			height:150;
+			background:red;
+		}
 		</style>	
 	</head>
 	<body onload="myFunction()">
@@ -157,11 +165,11 @@
 		$profitpercentage=0;
 		while($row = mysqli_fetch_array( $sql ))
 		{
-		$totalpurchaseitems = $totalpurchaseitems + $row[4] + $row[8];
-		$totalitems = $totalitems + $row[8];
+		$totalpurchaseitems = $totalpurchaseitems + $row[4] + $row[7];
+		$totalitems = $totalitems + $row[7];
 		$totalremain = $totalremain + $row[4];
-		$totalsell = $totalsell + ($row[6] * $row[8]);
-		$totalpurchase = $totalpurchase + ($row[7] * $row[8]);	
+		$totalsell = $totalsell + ($row[5] * $row[7]);
+		$totalpurchase = $totalpurchase + ($row[6] * $row[7]);	
 		}
 		echo $totalitems;
 		echo "<br>";
@@ -212,7 +220,18 @@
 							<p class="data" id="profit"></p>
 				
 						</div>
-					</div>
+						<div class="block"> 
+						<?php
+								$date = date('y-m-d');
+								$display = "SELECT * from u_registration WHERE date= '$date'";
+
+								$sql = mysqli_query( $link, $display);
+							$count = mysqli_num_rows($sql);
+							
+							echo '<h4>TODAY Signups</h4>
+							<h2>',$count,'</h2>';
+							?>
+						</div>
 					<div class="graph" id="fuitinsert">
 					<form class="form-group form" method="post" action="data3.php">
 							<h1 style="text-align:center"> Insert New Fruit  </h1>
@@ -228,10 +247,6 @@
 							<input type="text" class="form-control" id="exampleInputEmail1" name="price" placeholder="Selling Price">
 							<input type="text" class="form-control" id="exampleInputEmail1" name="pur_price" placeholder="Purchase Price">
 							<input type="text" class="form-control" id="exampleInputEmail1" name="quantity" placeholder="Quantity">
-							
-							
-						
-						
 						<button type="submit" class="btn btn-primary">Submit</button>
 						</form>
 
@@ -241,16 +256,17 @@
 
 				<h5 style="text-align:center">Orders</h5>
 			
-				<table class="table col-md-11 table-bordered">
+				<table class="table col-md-12 table-bordered">
 
 				<thead class="thead-dark">
 				<tr>
 				<th scope="col">No.</th>
 				<th scope="col">Fruit Name</th>
-				<th scope="col">Quantity</th>
-				<th scope="col">Price</th>
+				<th scope="col">Quantity Remain</th>
+				<th scope="col">Sold Quantiy</th>
+				<th scope="col">Price per kg</th>
 				<th scope="col">Total</th>
-				<th scope="col">Total</th>
+				<th scope="col">Total Profit</th>
 				</tr>
 				</thead>
 
@@ -259,7 +275,7 @@
 						
 						$username = $_SESSION['login'];
 						$id = 0;
-						$display = "SELECT * from $username";
+						$display = "SELECT * from fruitdata";
 
 						$sql = mysqli_query( $link, $display);
 				//		$count = mysqli_num_rows($sql);
@@ -272,10 +288,63 @@
 				echo ' <tr >
 					<th class="record" id="record-">',$id,'</th>
 					<td> ',$row[1],'</td>
-					<td>',$row[2],'</td>
-					<td>',$row[3],'</td>
 					<td>',$row[4],'</td>
-					<td><a role="button" href="delete.php?delete=',$row['0'],'"  class="btn btn-danger delete" name="delete">X</a></td>	
+					<td>',$row[7],'</td>
+					<td>',$row[5],'</td>
+					<td>',$row[4] + $row[7],'</td>
+					<td>',$row[8],'</td>	
+					</tr>';
+
+				
+				}
+				?>
+				
+					</table>
+
+				
+								</div>
+
+				<div class="graph" id="order">
+
+				<h5 style="text-align:center">Users</h5>
+			
+				<table class="table col-md-12 table-bordered">
+
+				<thead class="thead-dark">
+				<tr>
+				<th scope="col">No.</th>
+				<th scope="col">Name</th>
+				<th scope="col">Username</th>
+				<th scope="col">Address</th>
+				<th scope="col">Email</th>
+				<th scope="col">Phone</th>
+				<th scope="col-md-12">Date</th>
+				</tr>
+				</thead>
+
+				<tbody>
+				<?php
+						
+						$username = $_SESSION['login'];
+						$id = 0;
+						$display = "SELECT * from u_registration";
+
+						$sql = mysqli_query( $link, $display);
+				//		$count = mysqli_num_rows($sql);
+					while ( $row = mysqli_fetch_array( $sql ) ) {
+
+						
+						$id++;
+					
+							
+				echo ' <tr >
+					<th class="record" id="record-">',$id,'</th>
+					<td> ',$row[3],'</td>
+					<td>',$row[1],'</td>
+					<td>',$row[4],'</td>
+					<td>',$row[5],'</td>
+					<td>',$row[9],'</td>
+					<td>',$row[10],'</td>	
 					</tr>';
 
 				
