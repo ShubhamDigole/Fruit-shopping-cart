@@ -13,6 +13,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link id="id" rel="stylesheet" type="text/css" media="screen" href="main.css" />
 		<script src="main.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<style>
 			.container-fluid{
 		
@@ -61,32 +62,36 @@
 				transition: 1s all;	
 				
 			}
-			#data{
-				max-width: 81%;	
-				padding: 12px;
+			.alldata{
+				
+				width: 100%;	
+				
 				margin-left: 250px;
 				transition: 1s all;
-				position:absolute;
-				
+				position: fixed;
+				overflow-y: scroll;
+				max-height: 100%;
 			}
 			
 			.graph{
 				/* transform: rotateX(180deg); */
-					 /* background: linear-gradient(red,blue); */ */
+					 /* background: linear-gradient(red,blue); */ 
 							margin-top:100px;
 								padding: 5px;
+								max-width:100%;
+								overflow:hidden;
 			}	
 			
 			.circle{
 				float:left;
 				z-index: 1;
 				overflow: hidden;
-				border-radius: 50%;
+				border-radius: 0;
 				position: relative;
 				margin: 10px;
 				background: green;
-				height: 300px;
-				width:300px;
+				height: 150px;
+				width:250px;
 			}
 			.inner{
 				right: 0;
@@ -105,7 +110,7 @@
 			.data{
 				z-index:5;
 				text-align:center;
-				margin-top: 140px;
+				margin-top: 75px;
 				top: 0;
 				bottom: 0;
 				right: 0;
@@ -113,6 +118,16 @@
 				
 
 			}
+			.block{
+			padding:25px;
+			margin-top:10px;
+			float:left;
+			position:relative;
+			width:250px;
+			height:150;
+			background:red;
+			margin-left:5px;
+		}
 			.form{
 			border:2px solid red;
 			max-width:500px;
@@ -122,91 +137,71 @@
 			padding:10px; 
 			
 			margin: auto;
-			margin-top:400px;
+			margin-top:10px;
 		}
 	
 		.form-control{
 			
 			margin: 10px;
 		}
-		.block{
-			margin-top:75px;
-			float:left;
+	
+		#msgs{
+			margin-top:400px;
 			position:relative;
-			width:250px;
-			height:150;
-			background:red;
+			border:1px solid gray;
 		}
 		</style>	
 	</head>
-	<body onload="myFunction()">
+	<body onload="myFunction()" data-spy="scroll" data-target=".conatiner" data-offset="50">
 		
 		<div class="container-fluid">
 		
-		  <div class="conatiner" id="sidepanel">	
+		  <div class="container" id="sidepanel">	
 			  
 				<ul>
-			<li id="id"><a href="#data"> Stats</a></li>
-			<li id="id"><a href="#fuitinsert"> Fruit Insert</a></li>
-			<li id="id"><a href="#order"> orders</a></li>
-			<li id="id">Stocks</li>
+			<li id="id"><a href="#data">Stats</a></li>
+			<li id="id"><a href="#msgs">Inbox</a></li>
+			<li id="id"><a href="#fuitinsert">Fruit Insert</a></li>
+			<li id="id"><a href="#order">Orders</a></li>
+			<li id="id"><a href="#add">Add Fruits</a>
+			</li>
+			<li id="id"><a href="#add">Users<a></li>
 			<li id="id">profile</li>
 			<li id="id">user's list</li>
 
 
-		<?php	
-		$query = "SELECT * FROM fruitdata ";
-		$sql = mysqli_query( $link, $query );
-		$totalitems =0;
-		$totalpurchase=0;
-		$totalsell = 0;
-		$totalpurchaseitems = 0;
-		$totalremain = 0;
-		$profitpercentage=0;
-		while($row = mysqli_fetch_array( $sql ))
-		{
-		$totalpurchaseitems = $totalpurchaseitems + $row[4] + $row[7];
-		$totalitems = $totalitems + $row[7];
-		$totalremain = $totalremain + $row[4];
-		$totalsell = $totalsell + ($row[5] * $row[7]);
-		$totalpurchase = $totalpurchase + ($row[6] * $row[7]);	
-		}
-		echo $totalitems;
-		echo "<br>";
-		echo $totalpurchase;
-		echo "<br>";
-		echo $totalsell;
 		
-		$totalprofit = $totalsell - $totalpurchase;
-		echo "<br>";
-		echo $totalprofit;
-		echo "<br>";
-		$tprecentage=1;
-		$tpercentage =$totalsell / 100;
-		echo "tpercentage";
-		echo $tpercentage;	
-		echo "<br>";
-		$profitpercentage = $totalprofit/$tpercentage;
-		echo $profitpercentage;
-		echo "<br>";
-		echo $totalpurchaseitems;
-		$percentage = $totalpurchaseitems/100;
-		echo "<br>";
-		echo $percentage;
-		echo "<br>";
-		$remain = $totalremain/$percentage;
-		echo $remain;
-		echo "<br>";
-		$sold = $totalitems / $percentage;
-		echo $sold;
-		?>
 
 		</ul>
-			</div>
-
-				<div id="side" class="container" onclick="hide()">></div>
-				<div class="container" id="data">
-					
+	</div>
+	<?php	
+				$query = "SELECT * FROM fruitdata ";
+				$sql = mysqli_query( $link, $query );
+				$totalitems =0;
+				$totalpurchase=0;
+				$totalsell = 0;
+				$totalpurchaseitems = 0;
+				$totalremain = 0;
+				$profitpercentage=0;
+				while($row = mysqli_fetch_array( $sql ))
+				{
+				$totalpurchaseitems = $totalpurchaseitems + $row[4] + $row[7];
+				$totalitems = $totalitems + $row[7];
+				$totalremain = $totalremain + $row[4];
+				$totalsell = $totalsell + ($row[5] * $row[7]);
+				$totalpurchase = $totalpurchase + ($row[6] * $row[7]);	
+				}
+				$totalprofit = $totalsell - $totalpurchase;
+				$tprecentage=1;
+				$tpercentage =$totalsell / 100;
+				$profitpercentage = $totalprofit/$tpercentage;
+				$percentage = $totalpurchaseitems/100;
+				$remain = $totalremain/$percentage;
+				$sold = $totalitems / $percentage;
+		?>
+		<div id="side" class="container" onclick="hide()">></div>
+				<div class="container alldata" id="data">
+					<div style="overflow-y: scroll;max-height: 100%;">
 					
 					<div class="graph">
 						
@@ -220,7 +215,7 @@
 							<p class="data" id="profit"></p>
 				
 						</div>
-						<div class="block"> 
+						<div class="circle"> 
 						<?php
 								$date = date('y-m-d');
 								$display = "SELECT * from u_registration WHERE date= '$date'";
@@ -231,7 +226,41 @@
 							echo '<h4>TODAY Signups</h4>
 							<h2>',$count,'</h2>';
 							?>
+							
 						</div>
+						<div class="circle"> 
+						<?php
+								$date = date('y-m-d');
+								$display = "SELECT * from u_registration";
+
+								$sql = mysqli_query( $link, $display);
+							$count = mysqli_num_rows($sql);
+							
+							echo '<h4>Total Users</h4>
+							<h2>',$count,'</h2>';
+							?>
+							
+						</div>
+					<div class="graph"id="msgs" >
+					<h4 align="center">INBOX</h4>
+						<?php
+							$display = "SELECT * from contactus";
+
+							$sql = mysqli_query( $link, $display);
+							//		$count = mysqli_num_rows($sql);
+							while ( $row = mysqli_fetch_array( $sql ) ) {
+
+								echo '<div >
+										<h4>Name: '.$row[1].'
+										</h4>
+										<h6>Massage: '.$row[4].'</h6>
+										</div>';
+
+
+
+							}
+						?>
+					</div>
 					<div class="graph" id="fuitinsert">
 					<form class="form-group form" method="post" action="data3.php">
 							<h1 style="text-align:center"> Insert New Fruit  </h1>
@@ -252,6 +281,7 @@
 
 											
 					</div>
+
 				<div class="graph" id="order">
 
 				<h5 style="text-align:center">Orders</h5>
@@ -302,8 +332,63 @@
 					</table>
 
 				
-								</div>
+					</div>
 
+					<div class="graph" id="add">
+						
+						<h5 style="text-align:center">Orders</h5>
+
+						<table class="table col-md-12 table-bordered">
+
+						<thead class="thead-dark">
+						<tr>
+						<th scope="col">No.</th>
+						<th scope="col">Fruit Name</th>
+						<th scope="col">Quantity Remain</th>
+						<th scope="col">Enter Quanity</th>
+						<th scope="col">Price per kg</th>
+						<th scope="col">Total</th>
+						<th scope="col">Add</th>
+						</tr>
+						</thead>
+						
+						<tbody>
+						<?php
+								 
+								$username = $_SESSION['login'];
+								$id = 0;
+								$display = "SELECT * from fruitdata";
+
+								$sql = mysqli_query( $link, $display);
+						//		$count = mysqli_num_rows($sql);
+							while ( $row = mysqli_fetch_array( $sql ) ) {
+
+								
+								$id = $row[0];
+							
+									
+						echo '<form method="post" action="insert.php?link=' . $row[0] . '& val='.$row[4].'"> 
+							<tr >
+							<th class="record" id="record-">',$id,'</th>
+							<td> ',$row[1],'</td>
+							<td>',$row[4],'</td>
+							<td><input type="number" name="insert"></td>
+							<td>',$row[5],'</td>
+							<td>',$row[4] + $row[7],'</td>
+							<td><input type="submit" class="btn btn-primary" value="Add"></td>	
+							</tr>
+							</form>';
+						
+
+						}
+						
+						
+						?>
+
+							</table>
+
+						</form>
+							</div>
 				<div class="graph" id="order">
 
 				<h5 style="text-align:center">Users</h5>
@@ -356,7 +441,7 @@
 				
 								</div>
 								
-			
+				</div>
 				</div>
 		</div>
 		<script>
@@ -393,6 +478,7 @@
 					sidebar.style.width = "0px";
 					text.style.marginLeft = "0px";
 					btn.style.marginLeft = "0px";
+					btn.style.maxWidth = "100%";
 					a=2;
 					
 		
@@ -403,6 +489,7 @@
 					a=5;					
 					text.style.marginLeft = "250px";
 					btn.style.marginLeft = "250px";
+					btn.style.width = "81%";
 
 				}
 				console.log(a);

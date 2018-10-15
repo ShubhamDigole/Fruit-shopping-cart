@@ -81,10 +81,10 @@ include("navbar.php");
 		<form action="" method="post">
 
 			<h4>Enter Quantity:<input type="number" onkeypress="myFunction()" id="qty" name="quantity" class="form-control col-md-2" required>
-			<p id="danger">Please enter proper Auantity</p>
+			<p id="danger">Please enter proper Quantity</p>
 			
 			<br>
-			<input type="submit" class="btn btn-primary"onclick="data()">	
+			<input type="submit" class="btn btn-primary" onclick="data()">	
 		</form>
 		</div>
 			
