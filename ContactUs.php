@@ -37,15 +37,20 @@
 		
 	<form action="cdata.php" method="post" name="contactus" class="form-group col-md-4">
 	
-		<input type="text" name="name" class="form-control" placeholder="Name">
-		<input type="text" name="email" class="form-control" placeholder="Email Address">
-		<input type="text" name="phoneno" class="form-control" placeholder="Phone no">
-			<input type="text" name="subject" class="form-control" placeholder="Subject">
-		<textarea class="form-control" name="msg" placeholder="Write message here..."></textarea>
-		<button type="submit" class="form-control btn btn-primary" name="submit">Submit</button>
+		<input type="text" name="name" class="form-control" required placeholder="Name">
+		<input type="text" name="email" class="form-control" required placeholder="Email Address">
+		<input type="text" name="phoneno" class="form-control" required placeholder="Phone no">
+			<input type="text" name="subject" class="form-control" required placeholder="Subject">
+		<textarea class="form-control" name="msg" required placeholder="Write message here..."></textarea>
+		<button type="submit" class="form-control btn btn-primary" name="submit" onclick="call()">Submit</button>
 
 	</form>
-	
+	<script>
+	function call(){
+
+		alert ("thanks for contacting us we will reach at you as soon as possible"); 
+	}
+	</script>
 </body>
 </html>
 

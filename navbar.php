@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+error_reporting(E_ALL & ~E_NOTICE);
 ?>
 <html>
 <head>
@@ -24,6 +25,7 @@ session_start();
 		}
 	
 		#log {
+			overflow:hidden;
 			color: white;
 			text-decoration: none;
 			position: absolute;
@@ -41,7 +43,7 @@ session_start();
 			display: block;
 		}
 		
-		.userimg {
+		.userimg {display:none;
 			border: 1px solid red;
 			margin-top: 10px;
 			margin-left: 10px;
@@ -82,10 +84,10 @@ session_start();
 		  <li class="nav-item active"> <a class="nav-link" href="#">Sort <span class="sr-only">(current)</span></a> </li>
 
 		</ul>
-		<form class="form-inline mx-auto">
+		<!-- <form class="form-inline mx-auto">
 				<input class="form-control" type="search" placeholder="Search" aria-label="Search">
 				<button id="search" class="btn btn-outline-success" type="submit">Search</button>
-		  </form>
+		  </form> -->
 
 		  <?php 
 		
@@ -141,7 +143,7 @@ session_start();
 		?>
 	<script>
 		document.getElementById( "login" ).style.display = "block";
-		document.getElementsByID("log").style.display = "none";
+		document.getElementByID("log").style.display = "none";
 	</script>
 	<?php
 	} else {
@@ -149,7 +151,7 @@ session_start();
 		?>
 	<script>
 		document.getElementById( "login" ).style.display = "none";
-		document.getElementsByClassName( "log" ).style.display = "block";
+		document.getElementByClassName( "log" ).style.display = "block";
 	</script>
 	<?php  
 	}

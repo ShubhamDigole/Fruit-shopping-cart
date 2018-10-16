@@ -47,7 +47,7 @@
 
 
 			
-		<table class="table col-md-11 table-bordered">
+		<table class="table col-md-/ table-bordered">
 		
   <thead class="thead-dark">
     <tr>
@@ -82,7 +82,7 @@
 		  <td>',$row[2],'</td>
 		  <td>',$row[3],'</td>
 		<td>',$row[4],'</td>
-		 <td><a role="button" href="delete.php?delete=',$row['0'],'"  class="btn btn-danger delete" name="delete">X</a></td>	
+		 <td><a role="button" href="delete.php?delete=',$row['0'],'"  class="btn btn-danger delete" name="delete">Bill</a></td>	
 		</tr>';
 
 	
