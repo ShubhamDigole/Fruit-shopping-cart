@@ -1,5 +1,6 @@
 	 <?php 
-	include("navbar.php")
+	include("navbar.php");
+	session_start();
 		?>
 	
 	
@@ -12,6 +13,8 @@
 		<title>Admin Panel</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link id="id" rel="stylesheet" type="text/css" media="screen" href="main.css" />
+
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 		<script src="main.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<style>
@@ -118,6 +121,10 @@
 				
 
 			}
+			#pad{
+
+				padding:20px;
+			}
 			.block{
 			padding:25px;
 			margin-top:10px;
@@ -150,10 +157,23 @@
 			position:relative;
 			border:1px solid gray;
 		}
+		i{
+			padding-right:10px;
+			
+		}
 		</style>	
 	</head>
 	<body onload="myFunction()" data-spy="scroll" data-target=".conatiner" data-offset="50">
-		
+					<?php
+						$admin = $_SESSION['admin'];
+						if($admin == 0){
+							?><script>
+								window.location.href = 'index.php';
+										</script>
+							<?php
+							
+						}
+						?>
 		<div class="container-fluid">
 		
 		  <div class="container" id="sidepanel">	
@@ -163,8 +183,7 @@
 			<li id="id"><a href="#msgs">Inbox</a></li>
 			<li id="id"><a href="#fuitinsert">Fruit Insert</a></li>
 			<li id="id"><a href="#order">Orders</a></li>
-			<li id="id"><a href="#add">Add Fruits</a>
-			</li>
+			<li id="id"><a href="#add">Add Fruits</a></li>
 			<li id="id"><a href="#add">Users<a></li>
 			<li id="id">profile</li>
 			<li id="id">user's list</li>
@@ -213,9 +232,9 @@
 							<div class="circle">
 							<div class="inner" id="profits"></div>
 							<p class="data" id="profit"></p>
-				
+								
 						</div>
-						<div class="circle"> 
+						<div class="circle" id="pad"> 
 						<?php
 								$date = date('y-m-d');
 								$display = "SELECT * from u_registration WHERE date= '$date'";
@@ -224,11 +243,13 @@
 							$count = mysqli_num_rows($sql);
 							
 							echo '<h4>TODAY Signups</h4>
-							<h2>',$count,'</h2>';
+							<i class="fas fa-user fa-3x"></i>
+							<h2>',$count,'</h2>
+							';
 							?>
 							
 						</div>
-						<div class="circle"> 
+						<div class="circle" id="pad"> 
 						<?php
 								$date = date('y-m-d');
 								$display = "SELECT * from u_registration";
@@ -237,6 +258,7 @@
 							$count = mysqli_num_rows($sql);
 							
 							echo '<h4>Total Users</h4>
+							<i class="fas fa-user fa-3x"></i>
 							<h2>',$count,'</h2>';
 							?>
 							
@@ -264,13 +286,8 @@
 					<div class="graph" id="fuitinsert">
 					<form class="form-group form" method="post" action="data3.php">
 							<h1 style="text-align:center"> Insert New Fruit  </h1>
-							
 							<input type="text" class="form-control" id="exampleInputEmail1" name="fruitname" placeholder="Fruit Name">
-							
-							
 							<input type="text" class="form-control" id="exampleInputEmail1" name="description" placeholder="Decription">
-								
-							
 							<input type="file" name="file">	
 							<br>
 							<input type="text" class="form-control" id="exampleInputEmail1" name="price" placeholder="Selling Price">
@@ -336,7 +353,7 @@
 
 					<div class="graph" id="add">
 						
-						<h5 style="text-align:center">Orders</h5>
+						<h5 style="text-align:center">Add Quantity</h5>
 
 						<table class="table col-md-12 table-bordered">
 
@@ -375,7 +392,7 @@
 							<td><input type="number" name="insert"></td>
 							<td>',$row[5],'</td>
 							<td>',$row[4] + $row[7],'</td>
-							<td><input type="submit" class="btn btn-primary" value="Add"></td>	
+							<td><button class="btn btn-primary"><i class="far fa-plus "></i><input type="submit" class="btn btn-primary" value="Add"></button></td>	
 							</tr>
 							</form>';
 						
@@ -410,6 +427,8 @@
 				<tbody>
 				<?php
 						
+						
+						
 						$username = $_SESSION['login'];
 						$id = 0;
 						$display = "SELECT * from u_registration";
@@ -420,7 +439,7 @@
 
 						
 						$id++;
-					
+						
 							
 				echo ' <tr >
 					<th class="record" id="record-">',$id,'</th>
@@ -465,7 +484,7 @@
 				
 				
 				sold.innerHTML = val2 + "%  are sold";
-				profit.innerHTML = val + "% profit";
+				profit.innerHTML =" <i class='fas fa-rupee-sign fa-1x'></i><h6>" + val + "% profit</h6>";
 			}
 			function hide(){
 				var text = document.getElementById('side');	 

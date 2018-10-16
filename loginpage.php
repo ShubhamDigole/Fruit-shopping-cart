@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Untitled Document</title>
+<title>Login</title>
 	
 	<style type="text/css">
 		body{
@@ -74,8 +74,7 @@
 					<form action="data2.php" method="post">
 						<p>
 						
-						  <input type="text" name="username" placeholder="Username" required> <br><br>
-						 
+						  <input type="text" name="username" placeholder="Username" required> <br><br> 
 						  <input type="password" name="password" placeholder="Password" class="box" required> <br><br>
 						  <input id="button" type="submit" value="Submit"> 
 

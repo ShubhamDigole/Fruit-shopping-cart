@@ -31,8 +31,11 @@ if( isset($_POST['username']))
 	{
 		
 		
+		
+		$row = mysqli_fetch_array( $result );
+		$_SESSION['admin'] = $row[11]; 
 		$_SESSION['login'] = $username;
-				
+		echo $_SESSION['admin'];		
 		header("location:index.php");
 		echo"login successful";
 	 	$query="Insert into login (Username,Password) values('$username','$password')";
