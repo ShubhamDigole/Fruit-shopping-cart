@@ -86,7 +86,7 @@
 				</div>
 		</div>
 	</div>
-				<?php
+		<?php
 
 
 
@@ -116,18 +116,20 @@
 				//if result matched $myusername and $mypassword, table row must be 1 row
 				
 				if( $count == 1 )
-				{
-					
-					
+				{	
+					//getting information from database to get if user is admin or not			
 					
 					$row = mysqli_fetch_array( $result );
+					
+					//store information if user is admin
+					
 					$_SESSION['admin'] = $row[11]; 
 					$_SESSION['login'] = $username;
 					echo $_SESSION['admin'];		
 					header("location:index.php");
 					echo"login successful";
 					$query="Insert into login (Username,Password) values('$username','$password')";
-					//echo $_SESSION['login'];
+					
 					$Result = mysqli_query($link,$query);
 					
 				}
@@ -136,7 +138,7 @@
 					echo	 "Your login Name or Password is invalid";
 				}
 			}
-			?>
+		?>
 
 </body>
 </html>
