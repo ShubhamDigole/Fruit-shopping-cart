@@ -1,12 +1,8 @@
 <?php	
-
+		//connecting database
 		require_once("DB_controller.php");
-
-
-
+		//values eneterd from users
 		$NAME = $_POST["fname"];
-		
-		
 		$Date = date("Y-m-d");
 		$ADDRESS = $_POST["address"];
 		$CITY = $_POST["city"];
@@ -25,31 +21,25 @@
 		$pass = mysqli_real_escape_string($link, $PASSWORDS);
 		$date = date('y-m-d');
 		
+		// to create table of user to store his order history
 		$create = "CREATE TABLE  $USERNAME (id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, Fruitname varchar(30) NOT NULL, Quantity INT(10), Price INT(30) NOT NULL, Total int(30) NOT NULL, Curdate DATE NOT NULL)";
-		//$create = "CREATE TABLE '$USERNAME' ( 'id' INT(11) NOT NULL AUTO_INCREMENT , 'Fruitname' VARCHAR(30) NOT NULL , 'Quantity' INT(10) NOT NULL , 'Price' INT(30) NOT NULL , 'Total' INT(30) NOT NULL , 'Curdate' DATE NOT NULL";
-		
+
+		//store user info into registration table
 		$query="INSERT INTO u_registration(Username, Passwords, C_Name, Address, email, DOB, Gender, Age, Phone_no, date) VALUES ('$user','$pass','$NAME','$ADD','$EMAIL','$DOB','$GENDER','$AGE','$PHONE', '$date')";
+			
+			//to check if create table of user is working
 			if(mysqli_query($link,$create))
 			{
-				
-			if(mysqli_query($link,$query))
-			{	
-				
-				
-					
-					header("location:loginpage.php");
-					
-				
-					
-				
-					// echo "table not create";
-					// mysqli_error($create);
-					
-			}	
-			else{
+				//to check if data is storring in database
+				if(mysqli_query($link,$query))
+				{	
+						header("location:loginpage.php");
+						
+				}	
+				else{
 
-				mysqli_error($query);
-			}
+						mysqli_error($query);
+				}
 			}	
 			else 
 			{

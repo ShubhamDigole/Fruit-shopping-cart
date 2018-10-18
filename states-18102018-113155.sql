@@ -1,0 +1,5 @@
+--
+-- Generated at https://bwdmedia.net/resource/sql-generator-for-indian-cities/
+--
+
+INSERT INTO `states` (`state_id`,`state_name`,`country_id`) VALUES (NULL,'Andaman & Nicobar Islands',1),(NULL,'Andhra Pradesh',1),(NULL,'Arunachal Pradesh',1),(NULL,'Assam',1),(NULL,'Bihar',1),(NULL,'Chandigarh',1),(NULL,'Chattisgarh',1),(NULL,'Dadra & Nagar Haveli',1),(NULL,'Daman & Diu',1),(NULL,'Delhi',1),(NULL,'Goa',1),(NULL,'Gujarat',1),(NULL,'Haryana',1),(NULL,'Himachal Pradesh',1),(NULL,'Jammu & Kashmir',1),(NULL,'Jharkhand',1),(NULL,'Karnataka',1),(NULL,'Kerala',1),(NULL,'Lakshadweep',1),(NULL,'Madhya Pradesh',1),(NULL,'Maharashtra',1),(NULL,'Manipur',1),(NULL,'Meghalaya',1),(NULL,'Mizoram',1),(NULL,'Nagaland',1),(NULL,'Odisha',1),(NULL,'Poducherry',1),(NULL,'Punjab',1),(NULL,'Rajasthan',1),(NULL,'Sikkim',1),(NULL,'Tamil Nadu',1),(NULL,'Telangana',1),(NULL,'Tripura',1),(NULL,'Uttar Pradesh',1),(NULL,'Uttarakhand',1),(NULL,'West Bengal',1);
