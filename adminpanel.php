@@ -19,14 +19,13 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<style>
 			.container-fluid{
-			margin-top:40px;
-			padding:0px;
+				margin-top:40px;
+				padding:0px;
 			}
 			.container{
 				padding: 0;
 				margin: 0;
 				float: right;
-				
 				
 			}
 			#sidepanel{
@@ -122,38 +121,38 @@
 				padding:20px;
 			}
 			.block{
-			padding:25px;
-			margin-top:10px;
-			float:left;
-			position:relative;
-			width:250px;
-			height:150;
-			background:red;
-			margin-left:5px;
-		}
-		.form{
-			margin-top:100px;
-			padding:10px;
-		}
-	
-		.form-control{
-			
-			margin: 10px;
-		}
-		#btn{
+				padding:25px;
+				margin-top:10px;
+				float:left;
+				position:relative;
+				width:250px;
+				height:150;
+				background:red;
+				margin-left:5px;
+			}
+			.form{
+				margin-top:100px;
+				padding:10px;
+			}
+		
+			.form-control{
+				
+				margin: 10px;
+			}
+			#btn{
 
-			margin:10px;
-		}
-	
-		#msgs{
-			margin-top:400px;
-			position:relative;
-			border:1px solid gray;
-		}
-		i{
-			padding-right:10px;
-			
-		}
+				margin:10px;
+			}
+		
+			#msgs{
+				margin-top:400px;
+				position:relative;
+				border:1px solid gray;
+			}
+			i{
+				padding-right:10px;
+				
+			}
 		</style>	
 	</head>
 	<body onload="myFunction()" data-spy="scroll" data-target=".conatiner" data-offset="50">
@@ -164,7 +163,7 @@
 					?><script>
 					// is user is not admin then redirect to index page
 					window.location.href = 'index.php';
-						</script>
+					</script>
 					<?php
 							
 				}
@@ -188,7 +187,7 @@
 				// get data from fruits table
 				$query = "SELECT * FROM fruitdata ";
 				$sql = mysqli_query( $link, $query );
-				//creating variables
+				
 				
 				while($row = mysqli_fetch_array( $sql )){
 					//to get toatal purchase items
@@ -217,301 +216,301 @@
 				$remain = $totalremain/$percentage;
 				$sold = $totalitems / $percentage;
 		?>
+		<!-- Button for hiding and diplyaing menu -->
 		<div id="side" class="container" onclick="hide()">></div>
 				<div class="container alldata" id="data">
 					<div style="overflow-y: scroll;max-height: 100%;">
 					
-					<div class="graph">
-						
-						<div class="circle">
-							<div class="inner" id="sold"></div>
-							<p class="data" id="sell"></p>
-				
-						</div>
+						<div class="graph">
+							<!-- block to display how much items sold -->
 							<div class="circle">
-							<div class="inner" id="profits"></div>
-							<p class="data" id="profit"></p>
+								<div class="inner" id="sold"></div>
+								<p class="data" id="sell"></p>
+					
+							</div>
+							<!-- block to display how much Profit got-->
+							<div class="circle">
+								<div class="inner" id="profits"></div>
+								<p class="data" id="profit"></p>
+									
+							</div>
+
+							<!-- block to display how many users registered today-->
+							<div class="circle" id="pad"> 
+							<?php
+								$date = date('y-m-d');
+								$display = "SELECT * from u_registration WHERE date= '$date'";
+								$sql = mysqli_query( $link, $display);
+								$count = mysqli_num_rows($sql);
 								
-						</div>
-						<div class="circle" id="pad"> 
-						<?php
-							$date = date('y-m-d');
-							$display = "SELECT * from u_registration WHERE date= '$date'";
-							$sql = mysqli_query( $link, $display);
-							$count = mysqli_num_rows($sql);
-							
-							echo '<h4>TODAY Signups</h4>
-							<i class="fas fa-user fa-3x"></i>
-							<h2>',$count,'</h2>
-							';
-							?>
-							
-						</div>
-						<div class="circle" id="pad"> 
-						<?php
-							$date = date('y-m-d');
-							$display = "SELECT * from u_registration";
+								echo '<h4>TODAY Signups</h4>
+								<i class="fas fa-user fa-3x"></i>
+								<h2>',$count,'</h2>
+								';
+								?>
+								
+							</div>
+							<div class="circle" id="pad"> 
+								<?php
+									$date = date('y-m-d');
+									$display = "SELECT * from u_registration";
+									$sql = mysqli_query( $link, $display);
+									$count = mysqli_num_rows($sql);									
+									echo '<h4>Total Users</h4>
+									<i class="fas fa-user fa-3x"></i>
+									<h2>',$count,'</h2>';
+									?>
+								
+							</div>
 
-							$sql = mysqli_query( $link, $display);
-							$count = mysqli_num_rows($sql);
-							
-							echo '<h4>Total Users</h4>
-							<i class="fas fa-user fa-3x"></i>
-							<h2>',$count,'</h2>';
-							?>
-							
-						</div>
-					<div class="graph"id="msgs" >
-					<h4 align="center">INBOX</h4>
-						<?php
-							$display = "SELECT * from contactus";
-							$sql = mysqli_query( $link, $display);
-							while ( $row = mysqli_fetch_array( $sql ) ) {
+							<!-- div for how much contact requests are admin got -->
+							<div class="graph"id="msgs" >
+								<h4 align="center">INBOX</h4>
+								<?php
+									$display = "SELECT * from contactus";
+									$sql = mysqli_query( $link, $display);
+									while ( $row = mysqli_fetch_array( $sql ) ) {
 
-								echo '<div >
-										<h4>Name: '.$row[1].'
-										</h4>
-										<h6>Massage: '.$row[4].'</h6>
-										</div>';
+										echo '<div >
+												<h4>Name: '.$row[1].'
+												</h4>
+												<h6>Massage: '.$row[4].'</h6>
+												</div>';
+										}
+								?>
+							</div>
+
+					<!--- div for iserting fruits -->
+					<div class="graph" id="fuitinsert">
+						<form class="form-group col-md-4 mx-auto form" method="post" action="">
+
+							<input type="text" class="form-control" id="exampleInputEmail1" name="fruitname" placeholder="Fruit Name">
+							<input type="text" class="form-control" id="exampleInputEmail1" name="description" placeholder="Decription">
+							<input type="file"  name="file" id="btn">	
+							<br>
+							<input type="text" class="form-control" id="exampleInputEmail1" name="price" placeholder="Selling Price">
+							<input type="text" class="form-control" id="exampleInputEmail1" name="pur_price" placeholder="Purchase Price">
+							<input type="text" class="form-control" id="exampleInputEmail1" name="quantity" placeholder="Quantity">
+							<button type="submit" class="btn btn-primary" name="submit" id="btn">Submit</button>
+						</form>
+						<?php	
+
+							if (isset($_POST['submit'])){
+							
+
+							$NAME = $_POST['fruitname'];
+							$DESCRIPTION = $_POST['description'];
+							$URL = $_POST['file'];
+							$PRICE = $_POST['price'];
+							$QUANTITY = $_POST['quantity'];
+							$Purchase = $_POST['pur_price'];
+							
+							// query to insert data to table
+							$query="INSERT INTO fruitdata(Name,Discription,ImgURl,Quantity,Price,pur_price) VALUES ('$NAME','$DESCRIPTION','http://localhost/Fruit-shopping-cart/img/$URL','$QUANTITY','$PRICE','$Purchase')";
+
+								if(mysqli_query($link,$query))
+								{
+									?><script>
+									window.location.href = 'adminpanel.php#fuitinsert';
+										</script>
+									<?php
+									//header("location:adminpanel.php#fuitinsert");
+									
+								}	
+								else 
+								{
+									// if error occured
+									echo "Error : Could not able to execute";
+									mysqli_error($query);
+									
+									mysqli_error($link);
+
+								}
+							
 								}
 						?>
+												
 					</div>
-					<div class="graph" id="fuitinsert">
-					<form class="form-group col-md-4 mx-auto form" method="post" action="">
 
-						<input type="text" class="form-control" id="exampleInputEmail1" name="fruitname" placeholder="Fruit Name">
-						<input type="text" class="form-control" id="exampleInputEmail1" name="description" placeholder="Decription">
-						<input type="file"  name="file" id="btn">	
-						<br>
-						<input type="text" class="form-control" id="exampleInputEmail1" name="price" placeholder="Selling Price">
-						<input type="text" class="form-control" id="exampleInputEmail1" name="pur_price" placeholder="Purchase Price">
-						<input type="text" class="form-control" id="exampleInputEmail1" name="quantity" placeholder="Quantity">
-						<button type="submit" class="btn btn-primary" name="submit" id="btn">Submit</button>
-					</form>
-					<?php	
+					<div class="graph" id="order">
 
-						if (isset($_POST['submit'])){
-						
+						<h5 style="text-align:center">Orders</h5>
+				
+						<table class="table col-md-12 table-bordered">
 
-						$NAME = $_POST['fruitname'];
-						$DESCRIPTION = $_POST['description'];
-						$URL = $_POST['file'];
-						$PRICE = $_POST['price'];
-						$QUANTITY = $_POST['quantity'];
-						$Purchase = $_POST['pur_price'];
+							<thead class="thead-dark">
+								<tr>
+									<th scope="col">No.</th>
+									<th scope="col">Fruit Name</th>
+									<th scope="col">Quantity Remain</th>
+									<th scope="col">Sold Quantiy</th>
+									<th scope="col">Price per kg</th>
+									<th scope="col">Total</th>
+									<th scope="col">Total Profit</th>
+								</tr>
+							</thead>
 
-						$query="INSERT INTO fruitdata(Name,Discription,ImgURl,Quantity,Price,pur_price) VALUES ('$NAME','$DESCRIPTION','http://localhost/Fruit-shopping-cart/img/$URL','$QUANTITY','$PRICE','$Purchase')";
-
-							if(mysqli_query($link,$query))
-							{
-								?><script>
-								window.location.href = 'adminpanel.php#fuitinsert';
-									</script>
+							<tbody>
 								<?php
-								//header("location:adminpanel.php#fuitinsert");
 								
-							}	
-							else 
-							{
-								echo "Error : Could not able to execute";
-								mysqli_error($query);
-								
-								mysqli_error($link);
 
-							}
-						
-							}
-					?>
-											
-					</div>
-
-				<div class="graph" id="order">
-
-				<h5 style="text-align:center">Orders</h5>
-			
-				<table class="table col-md-12 table-bordered">
-
-				<thead class="thead-dark">
-					<tr>
-						<th scope="col">No.</th>
-						<th scope="col">Fruit Name</th>
-						<th scope="col">Quantity Remain</th>
-						<th scope="col">Sold Quantiy</th>
-						<th scope="col">Price per kg</th>
-						<th scope="col">Total</th>
-						<th scope="col">Total Profit</th>
-					</tr>
-				</thead>
-
-				<tbody>
-				<?php
-						
-						$username = $_SESSION['login'];
-						$id = 0;
-						$display = "SELECT * from fruitdata";
-
-						$sql = mysqli_query( $link, $display);
-				//		$count = mysqli_num_rows($sql);
-						while ( $row = mysqli_fetch_array( $sql ) ) {
-
-						
-						$id = $row[0];
-					
-							
-					echo ' <tr >
-					<th class="record" id="record-">',$id,'</th>
-					<td> ',$row[1],'</td>
-					<td>',$row[4],'</td>
-					<td>',$row[7],'</td>
-					<td>',$row[5],'</td>
-					<td>',$row[4] + $row[7],'</td>
-					<td>',$row[8],'</td>	
-					</tr>';
-
-				
-						}
-						?>
-				
-				</table>
-
-				
-			</div>
-
-			<div class="graph" id="add">
-						
-				<h5 style="text-align:center">Add Quantity</h5>
-
-				<table class="table col-md-12 table-bordered">
-					<thead class="thead-dark">
-						<tr>
-							<th scope="col">No.</th>
-							<th scope="col">Fruit Name</th>
-							<th scope="col">Quantity Remain</th>
-							<th scope="col">Enter Quanity</th>
-							<th scope="col">Price per kg</th>
-							<th scope="col">Total</th>
-							<th scope="col">Add</th>
-						</tr>
-					</thead>
-						
-					<tbody>
-						<?php
-								 
 								$username = $_SESSION['login'];
 								$id = 0;
+
+								// query to select all data from fruits data
 								$display = "SELECT * from fruitdata";
 
 								$sql = mysqli_query( $link, $display);
-						//		$count = mysqli_num_rows($sql);
+								
+								// loop until all data is written
 								while ( $row = mysqli_fetch_array( $sql ) ) {
+									$id = $row[0];
+										
+									echo ' <tr >
+									<th class="record" id="record-">',$id,'</th>
+									<td> ',$row[1],'</td>
+									<td>',$row[4],'</td>
+									<td>',$row[7],'</td>
+									<td>',$row[5],'</td>
+									<td>',$row[4] + $row[7],'</td>
+									<td>',$row[8],'</td>	
+									</tr>';
 
-								
-								$id = $row[0];
 							
+									}
+								?>
+					
+						</table>
+
+					
+					</div>
+
+				<div class="graph" id="add">
+						
+					<h5 style="text-align:center">Add Quantity</h5>
+
+					<table class="table col-md-12 table-bordered">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">No.</th>
+								<th scope="col">Fruit Name</th>
+								<th scope="col">Quantity Remain</th>
+								<th scope="col">Enter Quanity</th>
+								<th scope="col">Price per kg</th>
+								<th scope="col">Total</th>
+								<th scope="col">Add</th>
+							</tr>
+						</thead>
+							
+						<tbody>
+							<?php
 									
-								echo '<form method="post" action="insert.php?link=' . $row[0] . '& val='.$row[4].'"> 
-								<tr >
-								<th class="record" id="record-">',$id,'</th>
-								<td> ',$row[1],'</td>
-								<td>',$row[4],'</td>
-								<td><input type="number" name="insert"></td>
-								<td>',$row[5],'</td>
-								<td>',$row[4] + $row[7],'</td>
-								<td><button class="btn btn-primary"><i class="far fa-plus "></i><input type="submit" class="btn btn-primary" value="Add"></button></td>	
-								</tr>
-								</form>';
-							
+									$username = $_SESSION['login'];
+									$id = 0;
+									$display = "SELECT * from fruitdata";
 
-							}
-						
-						
-						?>
-
-				</table>
-
-			
-			</div>
-			<div class="graph" id="order">
-
-				<h5 style="text-align:center">Users</h5>
-			
-				<table class="table col-md-12 table-bordered">
-
-					<thead class="thead-dark">
-						<tr>
-							<th scope="col">No.</th>
-							<th scope="col">Name</th>
-							<th scope="col">Username</th>
-							<th scope="col">Address</th>
-							<th scope="col">Email</th>
-							<th scope="col">Phone</th>
-							<th scope="col-md-12">Date</th>
-						</tr>
-					</thead>
-
-				<tbody>
-				<?php
-						
-						
-						
-						$username = $_SESSION['login'];
-						$id = 0;
-						$display = "SELECT * from u_registration";
-
-						$sql = mysqli_query( $link, $display);
-				//		$count = mysqli_num_rows($sql);
-						while ( $row = mysqli_fetch_array( $sql ) ) {
-
-						
-						$id++;
-						
-							
-						echo ' <tr >
-						<th class="record" id="record-">',$id,'</th>
-						<td> ',$row[3],'</td>
-						<td>',$row[1],'</td>
-						<td>',$row[4],'</td>
-						<td>',$row[5],'</td>
-						<td>',$row[9],'</td>
-						<td>',$row[10],'</td>	
-						</tr>';
-
-				
-					}
-				?>
-				
-			</table>
-
-				
-		</div>
+									$sql = mysqli_query( $link, $display);
+									
+									//$count = mysqli_num_rows($sql);
+									while ( $row = mysqli_fetch_array( $sql ) ) {
+									$id = $row[0];
+									echo '<form method="post" action="insert.php?link=' . $row[0] . '& val='.$row[4].'"> 
+									<tr >
+									<th class="record" id="record-">',$id,'</th>
+									<td> ',$row[1],'</td>
+									<td>',$row[4],'</td>
+									<td><input type="number" name="insert"></td>
+									<td>',$row[5],'</td>
+									<td>',$row[4] + $row[7],'</td>
+									<td><button class="btn btn-primary"><i class="fa fa-plus"></i><input type="submit" class="btn btn-primary" value="Add"></button></td>	
+									</tr>
+									</form>';
 								
-	</div>
+
+								}
+							
+							
+							?>
+						</tbody>
+					</table>
 				</div>
-		</div>
-		<script>
-			var a=4;
-			function myFunction(){
-				var val = parseInt(" <?php echo $profitpercentage?>");
+				<div class="graph" id="order">
+
+					<h5 style="text-align:center">Users</h5>
 				
+					<table class="table col-md-12 table-bordered">
+
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">No.</th>
+								<th scope="col">Name</th>
+								<th scope="col">Username</th>
+								<th scope="col">Address</th>
+								<th scope="col">Email</th>
+								<th scope="col">Phone</th>
+								<th scope="col-md-12">Date</th>
+							</tr>
+						</thead>
+
+					<tbody>
+						<?php
+							
+							
+							
+							$username = $_SESSION['login'];
+							$id = 0;
+							$display = "SELECT * from u_registration";
+
+							$sql = mysqli_query( $link, $display);
+							
+							while ( $row = mysqli_fetch_array( $sql ) ) {
+
+							$id++;	
+							echo ' <tr >
+							<th class="record" id="record-">',$id,'</th>
+							<td> ',$row[3],'</td>
+							<td>',$row[1],'</td>
+							<td>',$row[4],'</td>
+							<td>',$row[5],'</td>
+							<td>',$row[9],'</td>
+							<td>',$row[10],'</td>	
+							</tr>';
+
+					
+							}
+						?>
+					<tbody>
+				</table>		
+			</div>
+									
+		</div>
+	
+
+		<script>
+			
+			
+			var a=4;
+			// onload function to load page 
+			function myFunction(){
+
+				// to pass values to javaascript
+				var val = parseInt(" <?php echo $profitpercentage?>");
 				var val2 = parseInt(" <?php echo $sold?>");
 				
-			
+				//  variables for grtting elements id
 				var fruit=document.getElementById('sold');
-				
-				
-				
 				var sold = document.getElementById('sell');
 				var profits=document.getElementById('profits');
 				var profit = document.getElementById('profit');
 				
 				fruit.style.height = val2+"%";
 				profits.style.height = val+"%";
-				
-				
 				sold.innerHTML = val2 + "%  are sold";
 				profit.innerHTML =" <i class='fas fa-rupee-sign fa-1x'></i><h6>" + val + "% profit</h6>";
 				}
-			function hide(){
+				
+				// function to hide the data
+				function hide(){
 				var text = document.getElementById('side');	 
 				var btn = document.getElementById('data');		
 				var sidebar = document.getElementById('sidepanel');
@@ -536,7 +535,7 @@
 					btn.style.width = "81%";
 
 				}
-				console.log(a);
+			
 
 			}
 		</script>
