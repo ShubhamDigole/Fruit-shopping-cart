@@ -414,7 +414,7 @@
 									//$count = mysqli_num_rows($sql);
 									while ( $row = mysqli_fetch_array( $sql ) ) {
 									$id = $row[0];
-									echo '<form method="post" action="insert.php?link=' . $row[0] . '& val='.$row[4].'"> 
+									echo '<form method="post" action="insert.php?link=' . $row[0] . '& val='.$row[4].'#add"> 
 									<tr >
 									<th class="record" id="record-">',$id,'</th>
 									<td> ',$row[1],'</td>
@@ -422,14 +422,14 @@
 									<td><input type="number" name="insert"></td>
 									<td>',$row[5],'</td>
 									<td>',$row[4] + $row[7],'</td>
-									<td><button class="btn btn-primary"><i class="fa fa-plus"></i><input type="submit" class="btn btn-primary" value="Add"></button></td>	
+									<td><button class="btn btn-primary"><i class="fa fa-plus"></i><input type="submit" class="btn btn-primary" name="submit2" value="Add"></button></td>	
 									</tr>
 									</form>';
-								
+									
 
 								}
-							
-							
+								
+								
 							?>
 						</tbody>
 					</table>
