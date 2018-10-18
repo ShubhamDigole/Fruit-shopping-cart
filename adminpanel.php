@@ -19,11 +19,10 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<style>
 			.container-fluid{
-		
 			margin-top:40px;
 			padding:0px;
-		}
-				.container{
+			}
+			.container{
 				padding: 0;
 				margin: 0;
 				float: right;
@@ -36,7 +35,6 @@
 				overflow: hidden;
 				transition: 1s all;
 				height: 100%;				
-				
 				width: 250px;				
 			}
 			ul{
@@ -68,7 +66,6 @@
 			.alldata{
 				
 				width: 100%;	
-				
 				margin-left: 250px;
 				transition: 1s all;
 				position: fixed;
@@ -77,12 +74,11 @@
 			}
 			
 			.graph{
-				/* transform: rotateX(180deg); */
-					 /* background: linear-gradient(red,blue); */ 
-							margin-top:100px;
-								padding: 5px;
-								max-width:100%;
-								overflow:hidden;
+				
+				margin-top:100px;
+				padding: 5px;
+				max-width:100%;
+				overflow:hidden;
 			}	
 			
 			.circle{
@@ -161,54 +157,60 @@
 		</style>	
 	</head>
 	<body onload="myFunction()" data-spy="scroll" data-target=".conatiner" data-offset="50">
+		<?php
+				$admin = $_SESSION['admin'];
+				// check is user is admin or not
+				if($admin == 0){
+					?><script>
+					// is user is not admin then redirect to index page
+					window.location.href = 'index.php';
+						</script>
 					<?php
-						$admin = $_SESSION['admin'];
-						if($admin == 0){
-							?><script>
-								window.location.href = 'index.php';
-										</script>
-							<?php
 							
-						}
-						?>
+				}
+			?>
 		<div class="container-fluid">
-		
-		  <div class="container" id="sidepanel">	
-			  
+			<!-- moving side panel -->
+		  	<div class="container" id="sidepanel">	
+				<!-- links in panel -->
 				<ul>
-			<li id="id"><a href="#data">Stats</a></li>
-			<li id="id"><a href="#msgs">Inbox</a></li>
-			<li id="id"><a href="#fuitinsert">Fruit Insert</a></li>
-			<li id="id"><a href="#order">Orders</a></li>
-			<li id="id"><a href="#add">Add Fruits</a></li>
-			<li id="id"><a href="#add">Users<a></li>
-			<li id="id">profile</li>
-			<li id="id">user's list</li>
+					<li id="id"><a href="#data">Stats</a></li>
+					<li id="id"><a href="#msgs">Inbox</a></li>
+					<li id="id"><a href="#fuitinsert">Fruit Insert</a></li>
+					<li id="id"><a href="#order">Orders</a></li>
+					<li id="id"><a href="#add">Add Fruits</a></li>
+					<li id="id"><a href="#add">Users<a></li>
+					<li id="id">profile</li>
 
-
-		
-
-		</ul>
-	</div>
-	<?php	
+				</ul>
+			</div>
+		<?php	
+				// get data from fruits table
 				$query = "SELECT * FROM fruitdata ";
 				$sql = mysqli_query( $link, $query );
-				$totalitems =0;
-				$totalpurchase=0;
-				$totalsell = 0;
-				$totalpurchaseitems = 0;
-				$totalremain = 0;
-				$profitpercentage=0;
-				while($row = mysqli_fetch_array( $sql ))
-				{
-				$totalpurchaseitems = $totalpurchaseitems + $row[4] + $row[7];
-				$totalitems = $totalitems + $row[7];
-				$totalremain = $totalremain + $row[4];
-				$totalsell = $totalsell + ($row[5] * $row[7]);
-				$totalpurchase = $totalpurchase + ($row[6] * $row[7]);	
+				//creating variables
+				
+				while($row = mysqli_fetch_array( $sql )){
+					//to get toatal purchase items
+					$totalpurchaseitems = $totalpurchaseitems + $row[4] + $row[7];
+					
+					//to get toatal items
+					$totalitems = $totalitems + $row[7];
+					
+					//to get toatal remaining items items
+					$totalremain = $totalremain + $row[4];
+
+					////to get toatal sold Price
+					$totalsell = $totalsell + ($row[5] * $row[7]);
+					
+					//to get toatal purchsed Price
+					$totalpurchase = $totalpurchase + ($row[6] * $row[7]);	
 				}
+				//to get toatal Profit
 				$totalprofit = $totalsell - $totalpurchase;
 				$tprecentage=1;
+
+				//to get percetage
 				$tpercentage =$totalsell / 100;
 				$profitpercentage = $totalprofit/$tpercentage;
 				$percentage = $totalpurchaseitems/100;
@@ -263,9 +265,7 @@
 					<h4 align="center">INBOX</h4>
 						<?php
 							$display = "SELECT * from contactus";
-
 							$sql = mysqli_query( $link, $display);
-							//		$count = mysqli_num_rows($sql);
 							while ( $row = mysqli_fetch_array( $sql ) ) {
 
 								echo '<div >
@@ -273,10 +273,7 @@
 										</h4>
 										<h6>Massage: '.$row[4].'</h6>
 										</div>';
-
-
-
-							}
+								}
 						?>
 					</div>
 					<div class="graph" id="fuitinsert">
@@ -335,15 +332,15 @@
 				<table class="table col-md-12 table-bordered">
 
 				<thead class="thead-dark">
-				<tr>
-				<th scope="col">No.</th>
-				<th scope="col">Fruit Name</th>
-				<th scope="col">Quantity Remain</th>
-				<th scope="col">Sold Quantiy</th>
-				<th scope="col">Price per kg</th>
-				<th scope="col">Total</th>
-				<th scope="col">Total Profit</th>
-				</tr>
+					<tr>
+						<th scope="col">No.</th>
+						<th scope="col">Fruit Name</th>
+						<th scope="col">Quantity Remain</th>
+						<th scope="col">Sold Quantiy</th>
+						<th scope="col">Price per kg</th>
+						<th scope="col">Total</th>
+						<th scope="col">Total Profit</th>
+					</tr>
 				</thead>
 
 				<tbody>
@@ -355,13 +352,13 @@
 
 						$sql = mysqli_query( $link, $display);
 				//		$count = mysqli_num_rows($sql);
-					while ( $row = mysqli_fetch_array( $sql ) ) {
+						while ( $row = mysqli_fetch_array( $sql ) ) {
 
 						
 						$id = $row[0];
 					
 							
-				echo ' <tr >
+					echo ' <tr >
 					<th class="record" id="record-">',$id,'</th>
 					<td> ',$row[1],'</td>
 					<td>',$row[4],'</td>
@@ -372,33 +369,32 @@
 					</tr>';
 
 				
-				}
-				?>
+						}
+						?>
 				
-					</table>
+				</table>
 
 				
-					</div>
+			</div>
 
-					<div class="graph" id="add">
+			<div class="graph" id="add">
 						
-						<h5 style="text-align:center">Add Quantity</h5>
+				<h5 style="text-align:center">Add Quantity</h5>
 
-						<table class="table col-md-12 table-bordered">
-
-						<thead class="thead-dark">
+				<table class="table col-md-12 table-bordered">
+					<thead class="thead-dark">
 						<tr>
-						<th scope="col">No.</th>
-						<th scope="col">Fruit Name</th>
-						<th scope="col">Quantity Remain</th>
-						<th scope="col">Enter Quanity</th>
-						<th scope="col">Price per kg</th>
-						<th scope="col">Total</th>
-						<th scope="col">Add</th>
+							<th scope="col">No.</th>
+							<th scope="col">Fruit Name</th>
+							<th scope="col">Quantity Remain</th>
+							<th scope="col">Enter Quanity</th>
+							<th scope="col">Price per kg</th>
+							<th scope="col">Total</th>
+							<th scope="col">Add</th>
 						</tr>
-						</thead>
+					</thead>
 						
-						<tbody>
+					<tbody>
 						<?php
 								 
 								$username = $_SESSION['login'];
@@ -413,45 +409,45 @@
 								$id = $row[0];
 							
 									
-						echo '<form method="post" action="insert.php?link=' . $row[0] . '& val='.$row[4].'"> 
-							<tr >
-							<th class="record" id="record-">',$id,'</th>
-							<td> ',$row[1],'</td>
-							<td>',$row[4],'</td>
-							<td><input type="number" name="insert"></td>
-							<td>',$row[5],'</td>
-							<td>',$row[4] + $row[7],'</td>
-							<td><button class="btn btn-primary"><i class="far fa-plus "></i><input type="submit" class="btn btn-primary" value="Add"></button></td>	
-							</tr>
-							</form>';
-						
+								echo '<form method="post" action="insert.php?link=' . $row[0] . '& val='.$row[4].'"> 
+								<tr >
+								<th class="record" id="record-">',$id,'</th>
+								<td> ',$row[1],'</td>
+								<td>',$row[4],'</td>
+								<td><input type="number" name="insert"></td>
+								<td>',$row[5],'</td>
+								<td>',$row[4] + $row[7],'</td>
+								<td><button class="btn btn-primary"><i class="far fa-plus "></i><input type="submit" class="btn btn-primary" value="Add"></button></td>	
+								</tr>
+								</form>';
+							
 
-						}
+							}
 						
 						
 						?>
 
-							</table>
+				</table>
 
-						</form>
-							</div>
-				<div class="graph" id="order">
+			
+			</div>
+			<div class="graph" id="order">
 
 				<h5 style="text-align:center">Users</h5>
 			
 				<table class="table col-md-12 table-bordered">
 
-				<thead class="thead-dark">
-				<tr>
-				<th scope="col">No.</th>
-				<th scope="col">Name</th>
-				<th scope="col">Username</th>
-				<th scope="col">Address</th>
-				<th scope="col">Email</th>
-				<th scope="col">Phone</th>
-				<th scope="col-md-12">Date</th>
-				</tr>
-				</thead>
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">No.</th>
+							<th scope="col">Name</th>
+							<th scope="col">Username</th>
+							<th scope="col">Address</th>
+							<th scope="col">Email</th>
+							<th scope="col">Phone</th>
+							<th scope="col-md-12">Date</th>
+						</tr>
+					</thead>
 
 				<tbody>
 				<?php
@@ -464,32 +460,32 @@
 
 						$sql = mysqli_query( $link, $display);
 				//		$count = mysqli_num_rows($sql);
-					while ( $row = mysqli_fetch_array( $sql ) ) {
+						while ( $row = mysqli_fetch_array( $sql ) ) {
 
 						
 						$id++;
 						
 							
-				echo ' <tr >
-					<th class="record" id="record-">',$id,'</th>
-					<td> ',$row[3],'</td>
-					<td>',$row[1],'</td>
-					<td>',$row[4],'</td>
-					<td>',$row[5],'</td>
-					<td>',$row[9],'</td>
-					<td>',$row[10],'</td>	
-					</tr>';
+						echo ' <tr >
+						<th class="record" id="record-">',$id,'</th>
+						<td> ',$row[3],'</td>
+						<td>',$row[1],'</td>
+						<td>',$row[4],'</td>
+						<td>',$row[5],'</td>
+						<td>',$row[9],'</td>
+						<td>',$row[10],'</td>	
+						</tr>';
 
 				
-				}
+					}
 				?>
 				
-					</table>
+			</table>
 
 				
-								</div>
+		</div>
 								
-				</div>
+	</div>
 				</div>
 		</div>
 		<script>
@@ -514,7 +510,7 @@
 				
 				sold.innerHTML = val2 + "%  are sold";
 				profit.innerHTML =" <i class='fas fa-rupee-sign fa-1x'></i><h6>" + val + "% profit</h6>";
-			}
+				}
 			function hide(){
 				var text = document.getElementById('side');	 
 				var btn = document.getElementById('data');		

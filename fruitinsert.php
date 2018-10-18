@@ -7,7 +7,7 @@
     <style>
 	
 	
-	form{
+		.form{
 			margin-top:100px;
 			padding:10px;
 		}
@@ -25,7 +25,6 @@
 <body>
 	<form class="form-group col-md-4 mx-auto" method="post" action="">
 
-    
 		<input type="text" class="form-control" id="exampleInputEmail1" name="fruitname" placeholder="Fruit Name">
 		<input type="text" class="form-control" id="exampleInputEmail1" name="description" placeholder="Decription">
 		<input type="file"  name="file" id="btn">	
