@@ -42,7 +42,7 @@
 
 <body>
 	<div class="head"> REGISTRATION</div>
-		<form name="registration" method="post" action="data.php" class="form-group" >
+		<form name="registration" method="post" action="" class="form-group" >
 	    <input placeholder="Full Name" type="text" name="fname" class="form-control">
 	    <input placeholder="Address" type="textarea" name="address" class="form-control">  
 	    <label>City : </label>
@@ -133,6 +133,16 @@
 			$pass = mysqli_real_escape_string($link, $PASSWORDS);
 			$date = date('y-m-d');
 			
+			$sql = "SELECT * FROM u_registration WHERE Username = '$user'";
+				
+				//$sql = "SElECT id FROM admin WHERE username = 'amar' and passcode = 'veer'";
+				
+				$result = mysqli_query($link,$sql);
+				
+				
+				$count = mysqli_num_rows($result);
+
+				if($count == 0){
 			// to create table of user to store his order history
 			$create = "CREATE TABLE  $USERNAME (id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY, Fruitname varchar(30) NOT NULL, Quantity INT(10), Price INT(30) NOT NULL, Total int(30) NOT NULL, Curdate DATE NOT NULL)";
 
@@ -153,7 +163,7 @@
 							mysqli_error($query);
 					}
 				}
-					
+
 				else 
 				{
 					echo "Error : Could not able to execute";
@@ -164,6 +174,15 @@
 
 				mysqli_close($link);
 			}
+			
+			else{
+		
+			echo '<script> alert ("username not available plz try another username")</script>';
+
+			}
+		
+		}
+
 		?>
 </body>
 </html>
