@@ -1,3 +1,9 @@
+<?php	
+	//connecting database
+	require_once("DB_controller.php");
+	// hode all warnings
+	error_reporting(E_ALL & ~E_NOTICE);
+?>
 <!doctype html>
 <html>
 <head>
@@ -41,26 +47,40 @@
 	    <input placeholder="Address" type="textarea" name="address" class="form-control">  
 	    <label>City : </label>
 	    <select name="city" id="city" class="form-control">
-	      <option value="karad">Karad</option>	
-	      <option value="pune">pune</option>	
-	      <option value="satara">satara</option>	
-	      <option value="kolhapur">kolhapur</option>	
-	      <option value="sangli">sangli</option>	
+		<?php
+			$display = "SELECT * from cities";
+
+			$sql = mysqli_query( $link, $display);
+			
+			while ( $row = mysqli_fetch_array( $sql ) ) {
+		
+				echo '<option value="'.$row[1].'">'.$row[1].'</option>';
+			}
+				
+		
+		?>
 	     	
         </select>	
-	    <input placeholder="District" type="text" name="district" class="form-control">
+	    <!-- <input placeholder="District" type="text" name="district" class="form-control"> -->
 	  	<label>State : </label>
 	    <select name="state" class="form-control">
-	      <option value="maharashtra">Maharashtra</option>	
-	      <option value="Gujrat">Gujrat</option>	
-	      <option value="Rajasthan">Rajasthan</option>	
-	      <option value="goa">goa</option>	
-	      </select>
+			<?php
+				$display = "SELECT * from states";
+
+				$sql = mysqli_query( $link, $display);
+				
+				while ( $row = mysqli_fetch_array( $sql ) ) {
+			
+					echo '<option value="'.$row[1].'">'.$row[1].'</option>';
+				}
+					
+			
+			?>
+	    </select>
 	  	<label>Country : </label>
 	    <select name="country" class="form-control">
 	      <option value="india">India</option>	
-	      <option value="africa">Africa</option>	
-	      <option value="singapur">Singapur</option>	
+	      
 	    </select>
 	  	<label>DOB : </label>
 	    <input placeholder="DOB" type="date" name="dob" class="form-control">
@@ -92,8 +112,7 @@
 
 
 		<?php	
-			//connecting database
-			require_once("DB_controller.php");
+			if (isset($_POST['submit'])) {
 			//values eneterd from users
 			$NAME = $_POST["fname"];
 			$Date = date("Y-m-d");
@@ -143,7 +162,7 @@
 
 				}
 				mysqli_close($link);
-			
+			}
 		?>
 </body>
 </html>
