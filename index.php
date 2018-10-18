@@ -116,7 +116,8 @@ include("navbar.php");
 		<?php
 		
 		require_once( "DB_controller.php" );
-	
+		
+		//to fetch fruit data from fruit table
 		$query = "SELECT * FROM fruitdata";
 		$sql = mysqli_query( $link, $query );
 			$count = mysqli_num_rows($sql);
@@ -144,7 +145,7 @@ include("navbar.php");
 
 			
 					
-				
+				//if user is logged in then buy now page if not then login page
 				
 				if($user != null){			
 				echo '<a class="btn btn-primary card-title" id="btn" href="buynow.php?link=' . $id . '">Buy Now</a>';

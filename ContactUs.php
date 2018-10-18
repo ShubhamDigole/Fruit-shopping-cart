@@ -35,7 +35,7 @@
 <body><br><br>
 	
 		
-	<form action="cdata.php" method="post" name="contactus" class="form-group col-md-4">
+	<form action="" method="post" name="contactus" class="form-group col-md-4">
 	
 		<input type="text" name="name" class="form-control" required placeholder="Name">
 		<input type="text" name="email" class="form-control" required placeholder="Email Address">
@@ -51,17 +51,53 @@
 		alert ("thanks for contacting us we will reach at you as soon as possible"); 
 	}
 	</script>
-</body>
-</html>
+	<?php
+	if(isset($_POST['submit'])){
+	
+	
+	require_once("DB_controller.php");
+	$to = "shubhamdigole@gmail.com";
+	$from = $_POST['email'];
+	$name = $_POST['name'];
+	$subject =$_POST['subject'];
+	$number = $_POST['phoneno'];
+//	$headers = "From:".$from;
+	$headers = "From:".$from;
+	$message = $_POST['msg'];
+	$contact="INSERT INTO contactus(Name,Email,Phone,Subject,Message) VALUES ('$name','$from','$number','$subject','$message')";
+	if(mysqli_query($link,$contact))
+			{
+				
+				
+					
+	
+		if(mail($from,$subject,$message,$headers)){
+		header("location:ContactUs.php");
+		echo "send successfully";
+		}
+		else{	
+			echo $number;
+			echo $message;
+			echo "mail not sent";
+		}
 
-<?php
-if(isset($_POST['submit'])){
-	
-	
+		}	
+	else 
+	{
+		echo "Error : Could not able to execute";
+		mysqli_error($contact);
+		mysqli_error($link);
+	}
+	mysqli_close($link);
+		
 	
 	
 	}
 
 
 
-?>
+	?>
+
+</body>
+</html>
+
