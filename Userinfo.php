@@ -9,7 +9,7 @@ include("navbar.php");
 <title>Untitled Document</title>
 	<style>
 		.container-fluid{
-			width: 2000;
+			
 			margin-top: 20px;
 			
 			
@@ -20,13 +20,21 @@ include("navbar.php");
 			width: 300px;
 		}
 		.container{
+			height:80%;
 			float: left;
 			/*margin-top: 10px;*/
 			margin-left: 20px;
 			background: rgba(185,175,175,1.00);
 			border: thick;
-			width: 400px;
+			
 			padding: 20px;
+		}
+
+		#data{
+			font-family:arial;
+			color:white;
+			width:200PX;
+			
 		}
 	</style>
 </head>
@@ -34,9 +42,9 @@ include("navbar.php");
 <body>
 	
 	<br>
-	<div class="container-fluid">
-		<div class="container col-sm-3">
-			<form name="container1" method="get" action="" class="form-group col-md-4">
+	<div class="container-fluid col-md-12">
+		<div class="container col-md-5">
+			
 			<?php
 			require_once("DB_controller.php");
 			$user=$_SESSION['login'];
@@ -47,30 +55,29 @@ include("navbar.php");
 
 			$rows = mysqli_fetch_array($sql);
 		?>
-			<lable>Name : </lable><input type="text" name="name" class="form-control" value="<?php echo $rows[3] ?>">
-			<lable>Username : </lable><input type="text" name="username" class="form-control" value="<?php echo $rows[1] ?>">
-			<lable>Address : </lable><input type="text" name="address" class="form-control" value="<?php echo $rows[4] ?>">
-			<lable>Email : </lable><input type="text" name="email" class="form-control" value="<?php echo $rows[5] ?>">
-			<lable>Date of birth : </lable><input type="text" name="dob" class="form-control" value="<?php echo $rows[6] ?>">
-			<lable>Phone No. : </lable><input type="text" name="phone" class="form-control" value="<?php echo $rows[9] ?>">
-			<button type="submit" class="form-control btn btn-primary" name="submit">Edit</button>
-			</form>
+			<lable>Name : </lable><p id="data"><?php echo$rows[3] ?></p>
+			<lable>Username : </lable><p id="data"><?php echo$rows[1] ?></p>
+			<lable>Address : </lable><p id="data"><?php echo$rows[4] ?></p>
+			<lable>Email : </lable><p id="data"><?php echo$rows[5] ?></p>
+			<lable>DOB: </lable><p id="data"><?php echo$rows[6] ?></p>
+			<lable>Phone No. : </lable><p id="data"><?php echo $rows[9] ?></p>
+						
 
 		</div>
 		
-		<div class="container col-sm-3" id="danger">
+		<div class="container col-md-5" id="danger">
 			<form name="container1" method="post" action="" class="form-group col-md-4">
 			
 			<lable>Name : </lable><input type="text" name="name" class="form-control">
-			<lable>Username : </lable><input type="text" name="username" class="form-control">
+		<!-- <lable>Username : </lable><input type="text" name="username" class="form-control"> -->
 			<lable>Address : </lable><input type="text" name="address" class="form-control">
-			<lable>Email : </lable><input type="text" name="email" class="form-control">
-			<lable>Date of birth : </lable><input type="text" name="dob" class="form-control">
-			<lable>Phone No. : </lable><input type="text" name="phone" class="form-control">
+			<!-- <lable>Email : </lable><input type="text" name="email" class="form-control"> -->
+			<lable>Date of birth : </lable><input type="date" name="dob" class="form-control">
+			<!-- <lable>Phone No. : </lable><input type="text" name="phone" class="form-control"> -->
 			<button type="submit" class="form-control btn btn-primary" name="submit" onClick="save()">Save</button>
 																					
 			<?php
-			function save(){
+			if(isset($_POST['submit'])){
 			require_once("DB_controller.php");
 			$id = $_SESSION['login'] ;
 			$user=$_SESSION['login'];
@@ -81,12 +88,16 @@ include("navbar.php");
 			$dob=$_POST['dob'];
 			$phone=$_POST['phone'];
 		
-			$sql = "UPDATE u_registration SET C_Name='$name', Username='$username', DOB='$dob', Address='$address', email='$email', Phone_no='$phone' WHERE id='$id'"; 
+			$sql = "UPDATE u_registration SET C_Name='$name', DOB='$dob', Address='$address' WHERE id='$id'"; 
 	
 			if(mysqli_query($link,$sql))
 			{
-				header("location:userinfo.php");
-				echo "record inserted successfully";
+				?>
+
+				<script>
+				alert(" changes updated successfully");
+				</script>
+				<?php
 			}	
 			else 
 			{
