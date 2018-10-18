@@ -61,16 +61,18 @@ include("navbar.php");
 		<?php
 		
 	}
+
+	// query to fetch data from table
 	$query = "SELECT * FROM fruitdata WHERE id = '$id'";
 	$sql = mysqli_query( $link, $query );
 	$count = mysqli_num_rows($sql);
 	$row = mysqli_fetch_array( $sql );	
 	$_SESSION['id']=$row[0];
 		?>
-<div class="container-fluid row col-md-11">
+	<div class="container-fluid row col-md-11">
 	
 	
-	<div class="card col-md-4"> <img class="card-img-top" id="image" src="<?php echo $row[3]?>" alt="Card image cap">
+		<div class="card col-md-4"> <img class="card-img-top" id="image" src="<?php echo $row[3]?>" alt="Card image cap">
 	</div>
 	<div class="line"></div>
 	<div class="container col-md-6">
@@ -94,14 +96,8 @@ include("navbar.php");
 	<div class="container-fluid col-md-11">
 	<H3>Description:</H3>
 	<p><?php echo $row[2];?></p>
-	</div>
-	
-	
-
-	
+	</div>	
 		
-	
-			
 		<?php	
 		if($row[4]<25){
 
@@ -121,6 +117,8 @@ include("navbar.php");
 		$purchase = $row[6] * $remain;
 		$profit = $sell - $purchase;
 		$user = $_SESSION['login'];
+
+		//insert data into user table
 		$datai = "INSERT INTO $user (Fruitname,Quantity,Price,Total) VALUES ('$row[1]','$quantity','$price','$total')";
 		if($quantity<$row[4]){
 		
@@ -130,6 +128,8 @@ include("navbar.php");
 		
 		
 		$newQuantity = $row[4] - $quantity;
+
+		//update fruit table
 		$insert = "UPDATE `fruitdata` SET `Quantity` = '$newQuantity', `sold_items` = '$remain', `profit` = '$profit' WHERE `fruitdata`.`id` = $row[0]";
 			
 		if(mysqli_query($link,$insert)){
@@ -137,11 +137,11 @@ include("navbar.php");
 			window.location.href = 'bill.php';
 					</script>
 		<?php
-		fflush($datai);
+		
 			}
 
 			else{
-				echo "sommetung";
+				echo "something went wrong";
 				
 			}
 		}
