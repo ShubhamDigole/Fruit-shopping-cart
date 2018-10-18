@@ -72,14 +72,15 @@
 			</div>
 				<div style="margin: 30px">
 					<form action="" method="post">
-						<p>
 						
-						  <input type="text" name="username" placeholder="Username" required> <br><br> 
-						  <input type="password" name="password" placeholder="Password" class="box" required> <br><br>
-						  <input id="button" type="submit" value="Submit"> 
-
-						</p>
-						 <a id="link" href="forgot_password.php">Forgot password?</a> <a id="link" href="Registration.php">Registration </a>
+					
+						<input placeholder="Username" type="text" name="username" class="form-control" required>
+						<br><br>
+						<input placeholder="Password" type="password" name="password" class="form-control" required>
+						<br><br>
+						<input id="button" type="submit" class="btn btn-primary" value="Submit"> 
+						
+						<a id="link" href="forgot_password.php">Forgot password?</a> <a id="link" href="Registration.php">Registration </a>
 					</form>
 					<!--<div style="font-size: 11px; color: #cc0000; margin-top: 10px"> </div>-->
 				
@@ -89,10 +90,13 @@
 		<?php
 
 
-
+			//connection to database
 			include("DB_controller.php");
+			
+			//start the session to store values in sesssion storage
 			session_start();
 
+			// call the function on clicking to submit button
 			if( isset($_POST['username']))
 			{	
 				$username = stripslashes($_REQUEST['username']);
