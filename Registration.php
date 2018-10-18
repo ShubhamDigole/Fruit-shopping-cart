@@ -1,28 +1,30 @@
 <?php	
 	//connecting database
 	require_once("DB_controller.php");
-	// hode all warnings
+	// hide all warnings
 	error_reporting(E_ALL & ~E_NOTICE);
+	include("navbar.php");
 ?>
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>Untitled Document</title>
+<title>Registration</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     
 	<style type= "text/css">
+	body{
+
+		background: url("./img/regback.jpg");
+	}
 	.head{
+		margin-top:70px;
 		text-align: center;
 		padding: 10px;
 		font-weight: bolder;
 		font-size: 25px;
-	}
+		}
 		form{
-			position:absolute;
-			right:0;
-			left:0;
-			margin:auto;
 			border-radius:10px;
 			border:3px solid gainsboro;
 			padding:10px;
@@ -30,19 +32,30 @@
 			
 		}
 		.form-control{
-			margin: 10px;
+			transition: 1s all;
+			background: rgba(0,0,0,0);
+			color:white;
+			margin-bottom:10px;
+		}
+		input[type=text]:focus {
+			background: rgba(0,0,0,0);
+		
 		}
 	label{
-			color: gray;
-			margin-bottom: -50px;	
+			color: white;
+				
 			margin-left:20px; 
+		}
+		.btn{
+			
+			
 		}
 	</style>
 </head>
 
 <body>
 	<div class="head"> REGISTRATION</div>
-		<form name="registration" method="post" action="" class="form-group" >
+		<form name="registration" method="post" action="" class="form-group mx-auto" >
 	    <input placeholder="Full Name" type="text" name="fname" class="form-control">
 	    <input placeholder="Address" type="textarea" name="address" class="form-control">  
 	    <label>City : </label>
@@ -88,14 +101,14 @@
 		<label>Gender : </label>
 		<input type="radio" name="gender" value="male"  <?php if(isset($gender) && $gender == "male") "checked";?> />Male
 		<input type="radio" name="gender" value="female"  <?php if(isset($gender) && $gender == "female") "checked";?>> Female    
-		<input placeholder="Email" type="text" name="email"class="form-control">    
-		<input placeholder="Phone no" type="text" name="phoneno" class="form-control">
+		<input placeholder="Email" type="email" name="email"class="form-control">    
+		<input placeholder="Phone no" type="number" name="phoneno" class="form-control">
 		<input placeholder="Username" type="text" name="username" class="form-control">
 		<input placeholder="Password" onkeypress="myFunction()" id="password" type="password" name="pass" class="form-control">
 		<!-- <input placeholder="Confirm Password" type="password" name="password" class="form-control"> -->  
 		<label id="out"><label>		
-		<input type="submit" name="submit" class="btn btn-primary" value="Submit"  >
-		<input type="button" name="Cancel" class="btn btn-danger" value="Cancel">
+		<input type="submit" name="submit" class="btn btn-primary " value="Submit"  >
+		<input type="reset" name="Cancel" class="btn btn-danger " value="Reset">
 			
 	</form>
 	<script>
@@ -152,6 +165,8 @@
 				//to check if create table of user is working
 				if(mysqli_query($link,$create))
 				{
+					echo '<script> alert ("Registration successful please login to continue..")</script>';
+		
 					//to check if data is storring in database
 					if(mysqli_query($link,$query))
 					{	
@@ -181,6 +196,15 @@
 
 			}
 		
+		}
+		
+		if($_SESSION['login'] != null){
+
+			?><script>
+			window.location.href = 'index.php';
+				</script>
+			<?php
+
 		}
 
 		?>

@@ -1,4 +1,9 @@
+<?php
+include('navbar.php');
+//start the session to store values in sesssion storage
+session_start();
 
+	?>
 
 <!doctype html>
 <html>
@@ -8,55 +13,42 @@
 	
 	<style type="text/css">
 		body{
+			background:url("./img/loginback.jpg");
 			font-family: Arial, Helvetica, sans-serif;
 			font-size: 14px;
-			margin-top: 220px;
+			margin-top:150px;
 		}
-		label{
-			font-family:arial;
-			font-weight: bold;
-			width: 100px;
-			font-size: 14px;
+		
+		form{
+			/* border:2px solid red;;  */
 
 		}
+		.form-control{
 
-		input{
-			
-			border: 2px solid gray;
-			padding: 5px;
-			border-radius: 5px;
-			width: 100%;
+			margin-top:10px;
 		}
 		#button{
 			width: 100%;
 			margin-top: -10px;
-			margin-left: 5px;
+			
 			font-weight: bold;
 			margin-bottom: 10px;
 			background:chocolate;
 		}
-		.Box{
-			border:2px solid gray;
-			width: 400px;
-			position: absolute;
-			margin: auto;	
-			margin-top: -100px;
-			right:0;
-			left: 0;
-			
-		} 
-		.header{
+		
+		p{
+			margin-bottom:10px;
 			font-family:Times New Roman;
 			color: antiquewhite;
 			font-size: 20px;
 			padding: 5px;
 			text-align: center;
-			height: 20px;
+			height: 40px;
 			background: #333333;
 		}
 		#link{
 			font-weight: bold;
-			color: black;
+			color: white;
 			text-decoration: none;
 			padding-left: 10px;
 			padding-right: 10px;
@@ -65,36 +57,29 @@
 </head>
 
 <body>
-	<div class="Box"> 
-		<div>
-			<div class="header">
-				<b>Login</b>
-			</div>
-				<div style="margin: 30px">
-					<form action="" method="post">
-						
-					
+					<form action="" method="post" class="from-group mx-auto col-md-4">
+		
+							<p>LOGIN</p>
+									
 						<input placeholder="Username" type="text" name="username" class="form-control" required>
-						<br><br>
+						
 						<input placeholder="Password" type="password" name="password" class="form-control" required>
-						<br><br>
+						<br>
 						<input id="button" name= "submit" type="submit" class="btn btn-primary" value="Submit"> 
 						
 						<a id="link" href="forgot_password.php">Forgot password?</a> <a id="link" href="Registration.php">Registration </a>
 					</form>
 					<!--<div style="font-size: 11px; color: #cc0000; margin-top: 10px"> </div>-->
 				
-				</div>
-		</div>
-	</div>
+		
 		<?php
 
+			
 
 			//connection to database
 			include("DB_controller.php");
 			
-			//start the session to store values in sesssion storage
-			session_start();
+			
 
 			// call the function on clicking to submit button
 			if( isset($_POST['submit']))
@@ -132,7 +117,7 @@
 					
 							if( $count2 == 1 )
 							{	
-								
+								header("location:index.php");	
 							//getting information from database to get if user is admin or not			
 							
 							$row = mysqli_fetch_array( $result );
@@ -141,9 +126,9 @@
 							
 							$_SESSION['admin'] = $row[11]; 
 							$_SESSION['login'] = $username;
-							echo $_SESSION['admin'];		
-							header("location:index.php");
-							echo"login successful";
+								
+							
+							
 							$query="Insert into login (Username,Password) values('$username','$password')";
 							
 							$Result = mysqli_query($link,$query);
@@ -159,6 +144,15 @@
 					mysqli_error($sql);
 					echo	 '<script> alert ("Your Username is invalid")</script>';
 				}
+			}
+
+			if($_SESSION['login'] != null){
+
+				?><script>
+				window.location.href = 'index.php';
+					</script>
+				<?php
+	
 			}
 		?>
 

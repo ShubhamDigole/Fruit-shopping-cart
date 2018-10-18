@@ -20,9 +20,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 			padding-left: 6px;
 		}
 		
-		#search {
-			position: relative;
-		}
+		
 	
 		#log {
 			overflow:hidden;
@@ -38,7 +36,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 			color: white;
 			text-decoration: none;
 			right: 0;
-			position: absolute;
+			
 			float: right;
 			display: block;
 		}
