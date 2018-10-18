@@ -91,20 +91,18 @@ include("navbar.php");
 		<div class="carousel-inner" role="listbox">
 			<div class="carousel-item active"> <img class="d-block mx-auto" src="images/back1.jpg" alt="First slide">
 				<div class="carousel-caption">
-					<h5>First slide Heading</h5>
-					<p>First slide Caption</p>
+					<h5>Wel-come</h5>
+					<p>To fruit zoa</p>
 				</div>
 			</div>
 			<div class="carousel-item"> <img class="d-block mx-auto" src="images/back2.jpg" alt="Second slide">
 				<div class="carousel-caption">
-					<h5>Second slide Heading</h5>
-					<p>Second slide Caption</p>
+					
 				</div>
 			</div>
 			<div class="carousel-item"> <img class="d-block mx-auto" src="images/back3.jpg" alt="Third slide">
 				<div class="carousel-caption">
-					<h5>Third slide Heading</h5>
-					<p>Third slide Caption</p>
+					
 				</div>
 			</div>
 		</div>
