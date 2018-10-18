@@ -79,7 +79,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 		  <li class="nav-item active"> <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a> </li>
 		  <li class="nav-item active"> <a class="nav-link" href="#">About Us <span class="sr-only">(current)</span></a> </li>
 		  <li class="nav-item active"> <a class="nav-link" href="ContactUs.php">Contact Us <span class="sr-only">(current)</span></a> </li>
-		  <li class="nav-item active"> <a class="nav-link" href="#">Sort <span class="sr-only">(current)</span></a> </li>
+		  <li class="nav-item active" id="adminpanel"> <a class="nav-link" href="adminpanel.php">adminpanel <span class="sr-only">(current)</span></a> </li>
 
 		</ul>
 		<!-- <form class="form-inline mx-auto">
@@ -135,11 +135,12 @@ error_reporting(E_ALL & ~E_NOTICE);
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	<script src="js/popper.min.js"></script>
 <?php
-
+	$admin = $_SESSION['admin'];
 	//if user is logged in then hide login button if not the show login button
 	if ( $user == NULL ) {
 		?>
 	<script>
+		document.getElementById( "adminpanel" ).style.display = "none";
 		document.getElementById( "login" ).style.display = "block";
 		document.getElementByID("log").style.display = "none";
 	</script>
@@ -147,11 +148,30 @@ error_reporting(E_ALL & ~E_NOTICE);
 	} else {
 
 		?>
-	<script>
-		document.getElementById( "login" ).style.display = "none";
-		document.getElementByClassName( "log" ).style.display = "block";
-	</script>
+		
+		<?php
+		// check is user is admin or not
+		if($_SESSION['admin'] == 1){
+			echo '<script>
+			document.getElementById( "adminpanel" ).style.display = "block"</script>
+			';
+					
+			}
+			else{
+				echo '<script>
+			document.getElementById( "adminpanel" ).style.display = "none";
+			</script>
+			';
+
+			}
+		?>
+		<script>
+			document.getElementById( "login" ).style.display = "none";
+			document.getElementByClassName( "log" ).style.display = "block";
+		</script>
 	<?php  
+		
+	
 	}
 	
 	?>
