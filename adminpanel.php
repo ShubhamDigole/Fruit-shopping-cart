@@ -135,21 +135,18 @@
 			background:red;
 			margin-left:5px;
 		}
-			.form{
-			border:2px solid red;
-			max-width:500px;
-			position: relative;
-			right: 0;
-			left: 0;
-			padding:10px; 
-			
-			margin: auto;
-			margin-top:10px;
+		.form{
+			margin-top:100px;
+			padding:10px;
 		}
 	
 		.form-control{
 			
 			margin: 10px;
+		}
+		#btn{
+
+			margin:10px;
 		}
 	
 		#msgs{
@@ -236,10 +233,9 @@
 						</div>
 						<div class="circle" id="pad"> 
 						<?php
-								$date = date('y-m-d');
-								$display = "SELECT * from u_registration WHERE date= '$date'";
-
-								$sql = mysqli_query( $link, $display);
+							$date = date('y-m-d');
+							$display = "SELECT * from u_registration WHERE date= '$date'";
+							$sql = mysqli_query( $link, $display);
 							$count = mysqli_num_rows($sql);
 							
 							echo '<h4>TODAY Signups</h4>
@@ -251,10 +247,10 @@
 						</div>
 						<div class="circle" id="pad"> 
 						<?php
-								$date = date('y-m-d');
-								$display = "SELECT * from u_registration";
+							$date = date('y-m-d');
+							$display = "SELECT * from u_registration";
 
-								$sql = mysqli_query( $link, $display);
+							$sql = mysqli_query( $link, $display);
 							$count = mysqli_num_rows($sql);
 							
 							echo '<h4>Total Users</h4>
@@ -284,18 +280,51 @@
 						?>
 					</div>
 					<div class="graph" id="fuitinsert">
-					<form class="form-group form" method="post" action="data3.php">
-							<h1 style="text-align:center"> Insert New Fruit  </h1>
-							<input type="text" class="form-control" id="exampleInputEmail1" name="fruitname" placeholder="Fruit Name">
-							<input type="text" class="form-control" id="exampleInputEmail1" name="description" placeholder="Decription">
-							<input type="file" name="file">	
-							<br>
-							<input type="text" class="form-control" id="exampleInputEmail1" name="price" placeholder="Selling Price">
-							<input type="text" class="form-control" id="exampleInputEmail1" name="pur_price" placeholder="Purchase Price">
-							<input type="text" class="form-control" id="exampleInputEmail1" name="quantity" placeholder="Quantity">
-						<button type="submit" class="btn btn-primary">Submit</button>
-						</form>
+					<form class="form-group col-md-4 mx-auto form" method="post" action="">
 
+						<input type="text" class="form-control" id="exampleInputEmail1" name="fruitname" placeholder="Fruit Name">
+						<input type="text" class="form-control" id="exampleInputEmail1" name="description" placeholder="Decription">
+						<input type="file"  name="file" id="btn">	
+						<br>
+						<input type="text" class="form-control" id="exampleInputEmail1" name="price" placeholder="Selling Price">
+						<input type="text" class="form-control" id="exampleInputEmail1" name="pur_price" placeholder="Purchase Price">
+						<input type="text" class="form-control" id="exampleInputEmail1" name="quantity" placeholder="Quantity">
+						<button type="submit" class="btn btn-primary" name="submit" id="btn">Submit</button>
+					</form>
+					<?php	
+
+						if (isset($_POST['submit'])){
+						
+
+						$NAME = $_POST['fruitname'];
+						$DESCRIPTION = $_POST['description'];
+						$URL = $_POST['file'];
+						$PRICE = $_POST['price'];
+						$QUANTITY = $_POST['quantity'];
+						$Purchase = $_POST['pur_price'];
+
+						$query="INSERT INTO fruitdata(Name,Discription,ImgURl,Quantity,Price,pur_price) VALUES ('$NAME','$DESCRIPTION','http://localhost/Fruit-shopping-cart/img/$URL','$QUANTITY','$PRICE','$Purchase')";
+
+							if(mysqli_query($link,$query))
+							{
+								?><script>
+								window.location.href = 'adminpanel.php#fuitinsert';
+									</script>
+								<?php
+								//header("location:adminpanel.php#fuitinsert");
+								
+							}	
+							else 
+							{
+								echo "Error : Could not able to execute";
+								mysqli_error($query);
+								
+								mysqli_error($link);
+
+							}
+						
+							}
+					?>
 											
 					</div>
 
@@ -378,7 +407,7 @@
 
 								$sql = mysqli_query( $link, $display);
 						//		$count = mysqli_num_rows($sql);
-							while ( $row = mysqli_fetch_array( $sql ) ) {
+								while ( $row = mysqli_fetch_array( $sql ) ) {
 
 								
 								$id = $row[0];
