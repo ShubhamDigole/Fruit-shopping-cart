@@ -9,8 +9,16 @@ include("navbar.php");
 <html>
 <head>
 <meta charset="utf-8">
-<title>Untitled Document</title>
+<title>Bill</title>
 <style>
+
+
+
+		body{
+
+	background:url("./img/billback.jpg");
+	}
+	
 	table{
 		font-weight: bold;
 		font-style: italic;		
@@ -23,6 +31,11 @@ include("navbar.php");
 		bottom: 0;
 		padding-bottom: 10px;
 	}
+
+	h1{
+
+		color:black;
+	}
 	.container-fluid{
 
 
@@ -33,14 +46,14 @@ include("navbar.php");
 	}
 
 	</style>
-	<script src="jspdf.min.js"></script>	
+	
 	</head>
 
 <body>
 
 <br><br><br><br><br>	
-<button onclick="generate()">Generate PDF</button>
-	<div class="html-2-pdfwrapper">
+
+	
 	<center><B><h1>BILL</h1></B></center>
 	<?php 
 		$query = "SELECT * FROM u_registration WHERE Username = '$user'";

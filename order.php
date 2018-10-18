@@ -8,15 +8,22 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Untitled Document</title>
+<title>Orders</title>
 	<style>
 	
-		#heading{	position: relative;
+		body{
+
+			background:url("./img/orderback.jpg");
+		}
+		#heading{	
+			color:white;
+			position: relative;
 			margin-top:100px;
 			text-align: center;
 		}
 		
 		.table{
+			color:white;
 			text-align: center;
 			position:absolute;
 			margin: auto;
@@ -30,7 +37,7 @@
 			font-weight: bolder;
 			color: white;
 			line-height: 15px;
-				height:30px;
+			height:30px;
 			width:40px;
 		}
 	

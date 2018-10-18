@@ -6,7 +6,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 <html>
 <head>
 <meta charset="utf-8">
-<title>Untitled Document</title>
+<!-- <title>Untitled Document</title> -->
 	
 	<style>
 		.bg-darkt {}
@@ -79,7 +79,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 		  <li class="nav-item active"> <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a> </li>
 		  <li class="nav-item active"> <a class="nav-link" href="#">About Us <span class="sr-only">(current)</span></a> </li>
 		  <li class="nav-item active"> <a class="nav-link" href="ContactUs.php">Contact Us <span class="sr-only">(current)</span></a> </li>
-		  <li class="nav-item active" id="adminpanel"> <a class="nav-link" href="adminpanel.php">adminpanel <span class="sr-only">(current)</span></a> </li>
+		  <li class="nav-item active" id="adminpanel"> <a class="nav-link" href="adminpanel.php">Admin Panel <span class="sr-only">(current)</span></a> </li>
 
 		</ul>
 		<!-- <form class="form-inline mx-auto">
@@ -152,6 +152,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 		<?php
 		// check is user is admin or not
 		if($_SESSION['admin'] == 1){
+			
 			echo '<script>
 			document.getElementById( "adminpanel" ).style.display = "block"</script>
 			';

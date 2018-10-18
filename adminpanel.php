@@ -74,7 +74,7 @@
 			
 			.graph{
 				
-				margin-top:100px;
+				margin-top:20px;
 				padding: 5px;
 				max-width:100%;
 				overflow:hidden;
@@ -173,13 +173,13 @@
 		  	<div class="container" id="sidepanel">	
 				<!-- links in panel -->
 				<ul>
-					<li id="id"><a href="#data">Stats</a></li>
+					<li id="id"><a href="#stats">Stats</a></li>
 					<li id="id"><a href="#msgs">Inbox</a></li>
 					<li id="id"><a href="#fuitinsert">Fruit Insert</a></li>
 					<li id="id"><a href="#order">Orders</a></li>
 					<li id="id"><a href="#add">Add Fruits</a></li>
-					<li id="id"><a href="#add">Users<a></li>
-					<li id="id">profile</li>
+					<li id="id"><a href="#users">Users<a></li>
+					
 
 				</ul>
 			</div>
@@ -221,7 +221,7 @@
 				<div class="container alldata" id="data">
 					<div style="overflow-y: scroll;max-height: 100%;">
 					
-						<div class="graph">
+						<div class="graph" id="stats">
 							<!-- block to display how much items sold -->
 							<div class="circle">
 								<div class="inner" id="sold"></div>
@@ -434,7 +434,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="graph" id="order">
+				<div class="graph" id="users">
 
 					<h5 style="text-align:center">Users</h5>
 				

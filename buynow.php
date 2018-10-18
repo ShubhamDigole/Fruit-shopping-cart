@@ -6,7 +6,7 @@ include("navbar.php");
 <html>
 <head>
 <meta charset="utf-8">
-<title>Untitled Document</title>
+<title>Buy Now</title>
 	<style>
 	#etc{
 	

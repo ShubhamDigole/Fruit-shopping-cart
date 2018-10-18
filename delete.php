@@ -1,12 +1,32 @@
 <?php
 	require_once("DB_controller.php");
 	include("navbar.php");
+
+	?>
+<<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Bill</title>
+	
+</head>
+<body>
+	<?php
+	
 	$username = $_SESSION['login'];
 	echo '<br><br><br><br><br><br>';
 	
 		$val = $_GET['delete'];
-		echo $val;
-		echo $username;
+		if($val == null){
+			?>
+			<script>
+					
+					window.location.href = 'index.php';
+			</script>
+			<?php
+
+		}
 		$que ="select * FROM `$username` WHERE `$username`.`id` = $val";
 		$val = mysqli_query( $link, $que);
 		$row = mysqli_fetch_array($val);	
@@ -31,3 +51,6 @@
 			
 		</table>'
 ?>
+</body>
+</html>
+	

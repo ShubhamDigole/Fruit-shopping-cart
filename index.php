@@ -10,7 +10,7 @@ include("navbar.php");
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Bootstrap - Prebuilt Layout</title>
+	<title>Home</title>
 
 	<!-- Bootstrap -->
 	
