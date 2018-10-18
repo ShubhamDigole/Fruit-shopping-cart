@@ -78,7 +78,7 @@
 						<br><br>
 						<input placeholder="Password" type="password" name="password" class="form-control" required>
 						<br><br>
-						<input id="button" type="submit" class="btn btn-primary" value="Submit"> 
+						<input id="button" name= "submit" type="submit" class="btn btn-primary" value="Submit"> 
 						
 						<a id="link" href="forgot_password.php">Forgot password?</a> <a id="link" href="Registration.php">Registration </a>
 					</form>
@@ -97,7 +97,7 @@
 			session_start();
 
 			// call the function on clicking to submit button
-			if( isset($_POST['username']))
+			if( isset($_POST['submit']))
 			{	
 				$username = stripslashes($_REQUEST['username']);
 				$password = stripslashes($_REQUEST['password']);
@@ -108,8 +108,8 @@
 				$pass = mysqli_real_escape_string($link, $password);
 				
 
-				$sql = "SELECT * FROM u_registration WHERE Username = '$username' and Passwords = '$password'";
-
+				$sql = "SELECT * FROM u_registration WHERE Username = '$user'";
+				
 				//$sql = "SElECT id FROM admin WHERE username = 'amar' and passcode = 'veer'";
 				
 				$result = mysqli_query($link,$sql);
@@ -121,25 +121,43 @@
 				
 				if( $count == 1 )
 				{	
-					//getting information from database to get if user is admin or not			
+					$sql2 = "SELECT * FROM u_registration WHERE Username = '$user' and Passwords = '$pass'";
 					
-					$row = mysqli_fetch_array( $result );
+					$result2 = mysqli_query($link,$sql2);
+				
+				
+					$count2 = mysqli_num_rows($result2);
+				
+					//if result matched $myusername and $mypassword, table row must be 1 row
 					
-					//store information if user is admin
-					
-					$_SESSION['admin'] = $row[11]; 
-					$_SESSION['login'] = $username;
-					echo $_SESSION['admin'];		
-					header("location:index.php");
-					echo"login successful";
-					$query="Insert into login (Username,Password) values('$username','$password')";
-					
-					$Result = mysqli_query($link,$query);
-					
+							if( $count2 == 1 )
+							{	
+								
+							//getting information from database to get if user is admin or not			
+							
+							$row = mysqli_fetch_array( $result );
+							
+							//store information if user is admin
+							
+							$_SESSION['admin'] = $row[11]; 
+							$_SESSION['login'] = $username;
+							echo $_SESSION['admin'];		
+							header("location:index.php");
+							echo"login successful";
+							$query="Insert into login (Username,Password) values('$username','$password')";
+							
+							$Result = mysqli_query($link,$query);
+							}
+
+							else {
+								echo	 '<script> alert ("Your Password is invalid")</script>';
+							}
 				}
 				else
 				{		
-					echo	 "Your login Name or Password is invalid";
+
+					mysqli_error($sql);
+					echo	 '<script> alert ("Your Username is invalid")</script>';
 				}
 			}
 		?>
