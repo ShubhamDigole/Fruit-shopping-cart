@@ -8,6 +8,11 @@ include("navbar.php");
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>user info</title>
 	<style>
+		
+		body{
+
+		background: url("./img/profileback.jpg");
+		}
 		.container-fluid{
 			
 			margin-top: 20px;
@@ -24,16 +29,22 @@ include("navbar.php");
 			float: left;
 			/*margin-top: 10px;*/
 			margin-left: 20px;
-			background: rgba(185,175,175,1.00);
+			background: rgba(0,0,0,.1);
 			border: thick;
 			
 			padding: 20px;
+		}
+		lable{
+
+			color:white;
 		}
 
 		#data{
 			font-family:arial;
 			color:white;
 			width:200PX;
+			font-size:16px;
+			font-weight:bolder;
 			
 		}
 	</style>

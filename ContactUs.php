@@ -12,7 +12,7 @@
 <link href="../../../Users/Admin/Documents/Unnamed Site 2/css/bootstrap-4.0.0.css" rel="stylesheet" type="text/css">
 	<style>
 		body{
-			background: url(img/orange.jpg); 
+			background: url(img/contact.png); 
 			background-size: cover;
 		}
 		
@@ -22,12 +22,13 @@
 			left: 0;
 			right:0;
 			padding: 20px;
-			background: rgba(0,0,0,0.8);
+			background: rgba(0,0,0,.1);
 			margin: auto;
 			
 			border-radius: 10px;
 		}
 		.form-control{
+			background:rgba(0,0,0,.1);
 			margin-bottom: 10px;
 		}
 	</style>

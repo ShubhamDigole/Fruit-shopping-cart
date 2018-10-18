@@ -8,10 +8,15 @@ include("navbar.php");
 <meta charset="utf-8">
 <title>Buy Now</title>
 	<style>
-	#etc{
-	
-	margin-top:100px;	
-	}
+		body{
+
+		background: url("./img/buyback.jpg");
+		}
+		
+		#etc{
+		
+		margin-top:100px;	
+		}
 		.container-fluid{
 			
 			position: relative;

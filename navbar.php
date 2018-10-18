@@ -115,7 +115,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 		 <div class="dropdown-menu">
 				<h6 class="dropdown-header">
 			  	<div class="dropdown-divider"></div>
-				<a class="dropdown-item" href="#">Profile</a> 
+				<a class="dropdown-item" href="Userinfo.php">Profile</a> 
 				<div class="dropdown-divider"></div>
 			  	<a class="dropdown-item" href="order.php">Orders</a>
 				<div class="dropdown-divider"></div>

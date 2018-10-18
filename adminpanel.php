@@ -18,6 +18,10 @@
 		<script src="main.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<style>
+			body{
+			color:white;
+			background: url("./img/adminback.jpg");
+			}
 			.container-fluid{
 				margin-top:40px;
 				padding:0px;
@@ -81,13 +85,14 @@
 			}	
 			
 			.circle{
+				
 				float:left;
 				z-index: 1;
 				overflow: hidden;
-				border-radius: 0;
+				border-radius: 3px;
 				position: relative;
 				margin: 10px;
-				background: green;
+				background: #00C851;
 				height: 150px;
 				width:250px;
 			}
@@ -102,7 +107,7 @@
 				position: absolute;
 				height:0px;
 				width:300px;
-				background: red;
+				background: #ff4444;
 			
 			}
 			.data{
@@ -131,13 +136,15 @@
 				margin-left:5px;
 			}
 			.form{
+				border-radius:10px;
 				margin-top:100px;
 				padding:10px;
+				background: rgba(255, 255, 255, 0.2);
 			}
 		
 			.form-control{
+				margin-top:20px;
 				
-				margin: 10px;
 			}
 			#btn{
 
@@ -145,6 +152,7 @@
 			}
 		
 			#msgs{
+				font-family:Sitka Subheading;
 				margin-top:400px;
 				position:relative;
 				border:1px solid gray;
@@ -282,7 +290,7 @@
 
 					<!--- div for iserting fruits -->
 					<div class="graph" id="fuitinsert">
-						<form class="form-group col-md-4 mx-auto form" method="post" action="">
+						<form class="form-group col-md-5 mx-auto form" method="post" action="">
 
 							<input type="text" class="form-control" id="exampleInputEmail1" name="fruitname" placeholder="Fruit Name">
 							<input type="text" class="form-control" id="exampleInputEmail1" name="description" placeholder="Decription">
@@ -496,7 +504,7 @@
 				// to pass values to javaascript
 				var val = parseInt(" <?php echo $profitpercentage?>");
 				var val2 = parseInt(" <?php echo $sold?>");
-				
+				var val3 = parseInt(" <?php echo $totalprofit?>");
 				//  variables for grtting elements id
 				var fruit=document.getElementById('sold');
 				var sold = document.getElementById('sell');
@@ -506,7 +514,7 @@
 				fruit.style.height = val2+"%";
 				profits.style.height = val+"%";
 				sold.innerHTML = val2 + "%  are sold";
-				profit.innerHTML =" <i class='fas fa-rupee-sign fa-1x'></i><h6>" + val + "% profit</h6>";
+				profit.innerHTML =val3 +" <i class='fas fa-rupee-sign fa-1x'></i><h6>" + val + "% profit</h6>";
 				}
 				
 				// function to hide the data
