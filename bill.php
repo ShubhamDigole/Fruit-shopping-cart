@@ -15,7 +15,7 @@ include("navbar.php");
 
 
 		body{
-
+			color:white;
 	background:url("./img/billback.jpg");
 	}
 	

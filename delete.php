@@ -9,7 +9,13 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Bill</title>
-	
+	<style>
+
+		body{
+			color:white;
+			background:url("./img/billback.jpg");
+			}
+	</style>
 </head>
 <body>
 	<?php

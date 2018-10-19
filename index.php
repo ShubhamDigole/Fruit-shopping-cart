@@ -89,18 +89,18 @@ include("navbar.php");
 			<li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
 		</ol>
 		<div class="carousel-inner" role="listbox">
-			<div class="carousel-item active"> <img class="d-block mx-auto" src="images/back1.jpg" alt="First slide">
+			<div class="carousel-item active"> <img class="d-block mx-auto" src="./img/back1.jpg" alt="First slide">
 				<div class="carousel-caption">
 					<h5>Wel-come</h5>
 					<p>To fruit zoa</p>
 				</div>
 			</div>
-			<div class="carousel-item"> <img class="d-block mx-auto" src="images/back2.jpg" alt="Second slide">
+			<div class="carousel-item"> <img class="d-block mx-auto" src="./img/back2.jpg" alt="Second slide">
 				<div class="carousel-caption">
 					
 				</div>
 			</div>
-			<div class="carousel-item"> <img class="d-block mx-auto" src="images/back3.jpg" alt="Third slide">
+			<div class="carousel-item"> <img class="d-block mx-auto" src="./img/back3.jpg" alt="Third slide">
 				<div class="carousel-caption">
 					
 				</div>
