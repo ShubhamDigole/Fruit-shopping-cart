@@ -25,6 +25,7 @@
 			.container-fluid{
 				margin-top:40px;
 				padding:0px;
+				margin-bottom:40px;
 			}
 			.container{
 				padding: 0;
@@ -77,7 +78,7 @@
 			}
 			
 			.graph{
-				
+				margin-bottom:20px;
 				margin-top:20px;
 				padding: 5px;
 				max-width:100%;

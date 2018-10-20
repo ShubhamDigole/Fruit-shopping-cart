@@ -49,10 +49,11 @@
 	<script>
 	function call(){
 
-		alert ("thanks for contacting us we will reach at you as soon as possible"); 
+		// alert ("thanks for contacting us we will reach at you as soon as possible"); 
 	}
 	</script>
 	<?php
+	$val = 1;
 	if(isset($_POST['submit'])){
 	
 	
@@ -71,10 +72,18 @@
 				
 				
 					
+				?>
+		<script>
 	
-		if(mail($from,$subject,$message,$headers)){
+	
+			 alert ("thanks for contacting us we will reach at you as soon as possible"); 
+	
+		</script>
+		<?php
+			if(mail($from,$subject,$message,$headers)){
 		header("location:ContactUs.php");
-		echo "send successfully";
+			
+
 		}
 		else{	
 			echo $number;
@@ -89,7 +98,7 @@
 		mysqli_error($contact);
 		mysqli_error($link);
 	}
-	mysqli_close($link);
+		mysqli_close($link);
 		
 	
 	
