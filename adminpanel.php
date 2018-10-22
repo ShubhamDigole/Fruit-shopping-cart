@@ -228,7 +228,7 @@
 		<!-- Button for hiding and diplyaing menu -->
 		<div id="side" class="container" onclick="hide()">></div>
 				<div class="container alldata" id="data">
-					<div style="overflow-y: scroll;max-height: 100%;">
+					<div>
 					
 						<div class="graph" id="stats">
 							<!-- block to display how much items sold -->
@@ -453,7 +453,7 @@
 
 					<h5 style="text-align:center">Users</h5>
 				
-					<table class="table col-md-12 table-bordered">
+					<table class="table col-md-11 mx-auto table-bordered">
 
 						<thead class="thead-dark">
 							<tr>
@@ -545,11 +545,11 @@
 				}
 				else{
 				
-					sidebar.style.width = "250px";
+					sidebar.style.width = "10%";
 					a=5;					
-					text.style.marginLeft = "250px";
-					btn.style.marginLeft = "250px";
-					btn.style.width = "81%";
+					text.style.marginLeft = "10%";
+					btn.style.marginLeft = "10%";
+					btn.style.width = "90%";
 					
 				}
 			
