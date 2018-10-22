@@ -126,7 +126,7 @@ session_start();
 							
 							$_SESSION['admin'] = $row[11]; 
 							$_SESSION['login'] = $username;
-								
+							$_SESSION['iduser'] = $row[0];
 							
 							
 							$query="Insert into login (Username,Password) values('$username','$password')";

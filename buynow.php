@@ -58,6 +58,8 @@ include("navbar.php");
 	<br><br><br><br>
 	
 	<?php
+	$user = $_SESSION['login'];
+	$ids = $_SESSION['iduser'];
 	$id = $_GET['link'];
 	if($id == null){
 		?><script>
@@ -81,9 +83,9 @@ include("navbar.php");
 	</div>
 	<div class="line"></div>
 	<div class="container col-md-6">
-		<h3>Fruit Name: <?php echo $row[1];?> </h3>
+		<h3>Fruit Name: <?php echo $row[1]; echo $ids?> </h3>
 		<h4>Price: <?php echo $row[5];?> ₹ </h4>
-		<h4 id="qty">Available: <?php echo $row[4];?> Kg </h4>
+		<h4 id="qty">Available: <?php echo $row[4]; ?> Kg </h4>
 		
 		<form action="" method="post">
 
@@ -109,7 +111,7 @@ include("navbar.php");
 			?>
 			<script>
 			var b =	document.getElementById('qty');
-			b.innerHTML = "Very Few Left: <?php echo $row[4]?> Kg";
+			b.innerHTML = "Very Few Left: <?php echo $row[4]; ?> Kg";
 			b.style.color = "red";
 			</script>
 			<?php
@@ -121,10 +123,9 @@ include("navbar.php");
 		$sell = $row[5] * $remain;	
 		$purchase = $row[6] * $remain;
 		$profit = $sell - $purchase;
-		$user = $_SESSION['login'];
-
+		
 		//insert data into user table
-		$datai = "INSERT INTO $user (Fruitname,Quantity,Price,Total) VALUES ('$row[1]','$quantity','$price','$total')";
+		$datai = "UPDATE u_registration SET $row[1] = '$quantity' WHERE Username = $user";
 		if($quantity<$row[4]){
 		
 		if($quantity != 0){

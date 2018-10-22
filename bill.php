@@ -63,7 +63,7 @@ include("navbar.php");
 		
 		$sql = mysqli_query($link,$query);
 
-	$rows = mysqli_fetch_array($sql)
+		$rows = mysqli_fetch_array($sql)
 		?>
 	<div class="container-fluid col-md-10">
 	<table class="col-md-12"> 
