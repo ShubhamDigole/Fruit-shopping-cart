@@ -464,7 +464,8 @@
 								<th scope="col">Address</th>
 								<th scope="col">Email</th>
 								<th scope="col">Phone</th>
-								<th scope="col-md-12">Date</th>
+								<th scope="col">Date</th>
+								<th scope="col">orders</th>
 							</tr>
 						</thead>
 
@@ -489,7 +490,8 @@
 							<td>',$row[4],'</td>
 							<td>',$row[5],'</td>
 							<td>',$row[9],'</td>
-							<td>',$row[10],'</td>	
+							<td>',$row[10],'</td>
+							<td><a class="btn btn-primary" href="userorders.php?id=',$row[0],'">orders</td>	
 							</tr>';
 
 					
@@ -549,7 +551,7 @@
 					text.style.marginLeft = "250px";
 					btn.style.marginLeft = "250px";
 					btn.style.width = "81%";
-
+					
 				}
 			
 
