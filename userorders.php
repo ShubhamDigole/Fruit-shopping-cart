@@ -9,8 +9,12 @@
                      <meta http-equiv="X-UA-Compatible" content="IE=edge">
                      <title>user orders</title>
                      <meta name="viewport" content="width=device-width, initial-scale=1">
-                     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-                     <script src="main.js"></script>
+                     <style>
+                        .table{
+
+                            text-align:center;
+                        }
+                     </style>
                  </head>
                  <body>
                      <br><br><br><br><br>
@@ -31,7 +35,17 @@
 							
 						<tbody>
 							<?php
-									$userid = $_GET['id'];
+                                    $userid = $_GET['id'];
+                                    if($userid == null){
+
+                                        ?><script>
+									window.location.href = 'index.php';
+										</script>
+									<?php
+
+                                    }
+
+                                        else{
 									$username = $_SESSION['login'];
                                     $id = 0;
                                     $ids = 12;
@@ -50,16 +64,16 @@
 									<tr>
 									<th class="record" id="record-">',$id,'</th>
 									<td> ',$row[1],'</td>
-									<td>',$rows[$ids],'</td>
+									<td>',$rows[$ids],' Kg</td>
 									
-									<td>',$row[5],'</td>
-									<td>',$row[4] + $row[7],'</td>
+									<td>',$row[5],' Rs</td>
+									<td>',$row[$ids] * $row[5],' Rs</td>
 									</tr>
 									';
 									
 
 								}
-								
+                            }
 								
 							?>
 						</tbody>
