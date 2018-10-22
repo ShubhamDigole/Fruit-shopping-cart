@@ -319,12 +319,19 @@
 
 								if(mysqli_query($link,$query))
 								{
+									$update = "ALTER TABLE  u_registration
+									ADD $NAME int(10);";
+									if( mysqli_query($link,$update)){
 									?><script>
 									window.location.href = 'adminpanel.php#fuitinsert';
 										</script>
 									<?php
 									//header("location:adminpanel.php#fuitinsert");
-									
+									}
+									else{
+
+										echo "error";
+									}
 								}	
 								else 
 								{

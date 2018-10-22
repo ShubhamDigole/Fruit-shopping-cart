@@ -77,14 +77,14 @@
 
 			$sql = mysqli_query( $link, $display);
 	//		$count = mysqli_num_rows($sql);
-		while ( $row = mysqli_fetch_array( $sql ) ) {
+			while ( $row = mysqli_fetch_array( $sql ) ) {
 
 			
 			$id = $row[0];
 		
 				
 	echo ' <tr >
-		  <th class="record" id="record-">',$id,'</th>
+		  <th class="record" id="record">',$id,'</th>
 		  <td> ',$row[1],'</td>
 		  <td>',$row[2],'</td>
 		  <td>',$row[3],'</td>
