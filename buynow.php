@@ -125,7 +125,7 @@ include("navbar.php");
 		$profit = $sell - $purchase;
 		
 		//insert data into user table
-		$datai = "UPDATE u_registration SET $row[1] = '$quantity' WHERE Username = $user";
+		$datai = "UPDATE u_registration SET $row[1] = '$quantity' WHERE id = $ids";
 		if($quantity<$row[4]){
 		
 		if($quantity != 0){
