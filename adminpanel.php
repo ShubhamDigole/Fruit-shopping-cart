@@ -319,8 +319,7 @@
 
 								if(mysqli_query($link,$query))
 								{
-									$update = "ALTER TABLE  u_registration
-									ADD $NAME int(10);";
+									$update = "ALTER TABLE  u_registration ADD $NAME int(10) NOT NULL";
 									if( mysqli_query($link,$update)){
 									?><script>
 									window.location.href = 'adminpanel.php#fuitinsert';
@@ -329,7 +328,7 @@
 									//header("location:adminpanel.php#fuitinsert");
 									}
 									else{
-
+										mysqli_error($update);
 										echo "error";
 									}
 								}	
