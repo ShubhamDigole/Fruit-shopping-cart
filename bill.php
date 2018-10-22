@@ -88,7 +88,7 @@ include("navbar.php");
 	
 		<?php
 	 $sts = $_SESSION['login'] ;
-	$getdata = "SELECT * FROM $sts ORDER BY id DESC LIMIT 1";
+	$getdata = "SELECT * FROM u_registration";
 	$val = mysqli_query( $link, $getdata );
 	$row = mysqli_fetch_array($val);	
 	 
