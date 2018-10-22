@@ -10,8 +10,22 @@
                      <title>user orders</title>
                      <meta name="viewport" content="width=device-width, initial-scale=1">
                      <style>
-                        .table{
+                         body{
 
+                            background:url("./img/orderback.jpg");
+                            }
+                            #heading{	
+                            color:white;
+                            position: relative;
+                           
+                            text-align: center;
+                            }
+                         table{
+
+                             color:white;
+                         }   
+                        .table{
+                           
                             text-align:center;
                         }
                      </style>
@@ -19,8 +33,33 @@
                  <body>
                      <br><br><br><br><br>
                  
-                    
-                    <table class="table col-md-11 mx-auto table-bordered">
+                    <h2 id="heading">Orders</h2>
+                    <?php
+                    $userid = $_GET['id'];
+                    $displays = "SELECT * from u_registration where id = $userid ";
+
+                    $sqls = mysqli_query( $link, $displays);
+                    $rows = mysqli_fetch_array( $sqls );
+                    ?>
+                    <table class="col-md-10 mx-auto"> 
+                        
+                            <tr>
+                        
+                            <th>Name: <?php echo $rows[3] ?></th>
+
+                                <th>E-mail: <?php echo $rows[5] ?></th>
+                            
+                            </tr>
+                            <tr>
+                        
+                            <th>City: <?php echo $rows[4] ?></th>
+                                <th>Mo No: <?php echo $rows[9] ?></th>
+                            
+                            </tr>
+                            
+                            </table>
+                            <br>
+                        <table class="table col-md-11 mx-auto table-bordered">
 						<thead class="thead-dark">
 							<tr>
 								<th scope="col">No.</th>
@@ -35,7 +74,7 @@
 							
 						<tbody>
 							<?php
-                                    $userid = $_GET['id'];
+                                    
                                     if($userid == null){
 
                                         ?><script>
@@ -52,14 +91,12 @@
 									$display = "SELECT * from fruitdata";
 
 									$sql = mysqli_query( $link, $display);
-									$displays = "SELECT * from u_registration where id = $userid ";
-
-                                    $sqls = mysqli_query( $link, $displays);
-                                    $rows = mysqli_fetch_array( $sqls );
+									
 									//$count = mysqli_num_rows($sql);
 									while ( $row = mysqli_fetch_array( $sql ) ) {
                                     $id = $row[0];
                                     $ids++;
+                                   
 									 echo '
 									<tr>
 									<th class="record" id="record-">',$id,'</th>
@@ -67,7 +104,7 @@
 									<td>',$rows[$ids],' Kg</td>
 									
 									<td>',$row[5],' Rs</td>
-									<td>',$row[$ids] * $row[5],' Rs</td>
+									<td>',$rows[$ids] * $row[5],' Rs</td>
 									</tr>
 									';
 									

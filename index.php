@@ -48,7 +48,7 @@ include("navbar.php");
 		.card-text {
 			padding: 0px;
 			margin-bottom: 20px;
-			border: 1px solid red;
+			
 			display: inline-block;
 		}
 		
@@ -133,11 +133,11 @@ include("navbar.php");
 					<?php echo $row[1];?>
 				</h5>
 				<h6 class="card-titles">Price:
-					<?php echo $row[5];?>
+					<?php echo $row[5];?> Rs
 				</h6>
 				
 				
-				<h6 class="card-text">Left In Stock:<?php echo $row[4];?></h6>
+				<h6 class="card-text">Left In Stock:<?php echo $row[4];?> Kg</h6>
 				<?php
 				
 

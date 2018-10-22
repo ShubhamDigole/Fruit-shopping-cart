@@ -117,7 +117,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 			  	<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="Userinfo.php">Profile</a> 
 				<div class="dropdown-divider"></div>
-			  	<a class="dropdown-item" href="order.php">Orders</a>
+				  <a class="dropdown-item" href="userorders.php?id=<?php echo $_SESSION['iduser']?>">Orders</a>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="logout.php">Log out</a>
 		  </div>
