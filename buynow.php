@@ -140,7 +140,7 @@ include("navbar.php");
 			
 		if(mysqli_query($link,$insert)){
 		?><script>
-			window.location.href = 'bill.php?name=<?php echo $row[1]?>';
+			window.location.href = 'bill.php?name=<?php echo $row[1]?>&quat=<?php echo $quantity?>&pr=<?php echo $row[5]?>';
 					</script>
 		<?php
 		

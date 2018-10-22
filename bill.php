@@ -56,6 +56,7 @@ include("navbar.php");
 	
 	<center><B><h1>BILL</h1></B></center>
 	<?php 
+		$user = $_SESSION['login'];
 		$query = "SELECT * FROM u_registration WHERE Username = '$user'";
 	  	
 		$sql = $result = mysqli_query($link,$query);
@@ -87,11 +88,12 @@ include("navbar.php");
 		<br>	
 	
 		<?php
-	 $sts = $_SESSION['login'] ;
-	$getdata = "SELECT * FROM u_registration";
-	$val = mysqli_query( $link, $getdata );
-	$row = mysqli_fetch_array($val);	
-	 
+		$fname = $_GET['name'];
+		$quantity = $_GET['quat'];
+		$price = $_GET['pr'];
+	 	$sts = $_SESSION['iduser'] ;
+	
+	 	$total = $quantity * $price;
 	
 
 	
@@ -111,10 +113,10 @@ include("navbar.php");
   <tbody>
     <tr>
       
-      <td><?php echo $row[1];?></td>
-      <td><?php echo $row[2];?></td>
-      <td><?php echo $row[3];?></td>
-	<td><?php echo $row[4];?></td>
+      <td><?php echo $fname;?></td>
+      <td><?php echo $quantity;?></td>
+      <td><?php echo $price;?></td>
+	<td><?php echo $total;?></td>
 	 	
     </tr>
 
