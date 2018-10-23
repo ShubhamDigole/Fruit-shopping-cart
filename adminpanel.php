@@ -449,6 +449,54 @@
 						</tbody>
 					</table>
 				</div>
+				<div class="graph" id="addprice">
+						
+					<h5 style="text-align:center">Add Quantity</h5>
+
+					<table class="table col-md-12 table-bordered">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">No.</th>
+								<th scope="col">Fruit Name</th>
+								<th scope="col">Price per kg</th>
+								<th scope="col">New Price</th>
+								
+								
+								<th scope="col">Add</th>
+							</tr>
+						</thead>
+							
+						<tbody>
+							<?php
+									
+									$username = $_SESSION['login'];
+									$id = 0;
+									$display = "SELECT * from fruitdata";
+
+									$sql = mysqli_query( $link, $display);
+									
+									//$count = mysqli_num_rows($sql);
+									while ( $row = mysqli_fetch_array( $sql ) ) {
+									$id = $row[0];
+									echo '<form method="post" action="price.php?link=' . $row[0] . '& val='.$row[4].'#add"> 
+									<tr >
+									<th class="record" id="record-">',$id,'</th>
+									<td> ',$row[1],'</td>
+									<td>',$row[5],'</td>
+									<td><input type="number" name="insert"></td>
+									
+									<td><button class="btn btn-primary"><i class="fa fa-plus"></i><input type="submit" class="btn btn-primary" name="submit2" value="Add"></button></td>	
+									</tr>
+									</form>';
+									
+
+								}
+								
+								
+							?>
+						</tbody>
+					</table>
+				</div>
 				<div class="graph" id="users">
 
 					<h5 style="text-align:center">Users</h5>
