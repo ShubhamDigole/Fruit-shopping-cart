@@ -10,7 +10,7 @@
     echo $id;
    
     if(mysqli_query($link,$insert)){
-    header("location:adminpanel.php#add");
+    header("location:adminpanel.php#changeadd");
     }
 
     else{

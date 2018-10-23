@@ -138,7 +138,7 @@
 			}
 			.form{
 				border-radius:10px;
-				margin-top:100px;
+				
 				padding:10px;
 				background: rgba(255, 255, 255, 0.2);
 			}
@@ -193,6 +193,7 @@
 					<li id="id"><a href="#order">Orders</a></li>
 					<li id="id"><a href="#add">Add Fruits</a></li>
 					<li id="id"><a href="#addprice">Change Price</a></li>
+					<li id="id"><a href="#changeadd">Change Address</a></li>
 					<li id="id"><a href="#users">Users<a></li>
 					
 
@@ -297,6 +298,7 @@
 
 					<!--- div for iserting fruits -->
 					<div class="graph" id="fuitinsert">
+					<h4 align="center">Insert New Fruit</h4>
 						<form class="form-group col-md-5 mx-auto form" method="post" action="">
 
 							<input type="text" class="form-control" id="exampleInputEmail1" name="fruitname" placeholder="Fruit Name">
@@ -491,7 +493,7 @@
 									<td>',$row[5],'</td>
 									<td><input type="number" name="insert"></td>
 									
-									<td><button class="btn btn-primary"><i class="fa fa-plus"></i><input type="submit" class="btn btn-primary" name="submit2" value="Add"></button></td>	
+									<td><button class="btn btn-primary"><i class="fa fa-plus"></i><input type="submit"  name="submit2" value="Add"></button></td>	
 									</tr>
 									</form>';
 									
@@ -503,7 +505,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="graph" id="users">
+				<div class="graph" id="changeadd">
 
 					<h5 style="text-align:center">Change Address</h5>
 				
@@ -558,19 +560,19 @@
 
 					<h5 style="text-align:center">Users</h5>
 				
-					<table class="table col-md-8 mx-auto table-bordered">
+					<table class="table col-md- mx-auto table-bordered">
 
 						<thead class="thead-dark">
 							<tr>
 								<th scope="col">No.</th>
 								<th scope="col">Name</th>
 								<th scope="col">Username</th>
-								<th scope="col">Address</th>
+								
 								<th scope="col">Email</th>
 								<th scope="col">Phone</th>
 								<th scope="col">Date</th>
 								<th scope="col">orders</th>
-								<th scope="col">Change Address</th>
+								
 							</tr>
 						</thead>
 
@@ -592,12 +594,11 @@
 							<th class="record" id="record-">',$id,'</th>
 							<td> ',$row[3],'</td>
 							<td>',$row[1],'</td>
-							<td>',$row[4],'</td>
+							
 							<td>',$row[5],'</td>
 							<td>',$row[9],'</td>
 							<td>',$row[10],'</td>
 							<td><a class="btn btn-primary" href="userorders.php?id=',$row[0],'">orders</td>
-							<td><a class="btn btn-primary" href="changeaddress.php?id=',$row[0],'">change Address</td>	
 							</tr>';
 
 					
