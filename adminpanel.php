@@ -39,7 +39,7 @@
 				overflow: hidden;
 				transition: 1s all;
 				height: 100%;				
-				width: 250px;				
+				width: 200px;				
 			}
 			ul{
 				padding: 0px;
@@ -59,7 +59,7 @@
 				top: 0;
 				bottom: 0;
 				margin: auto;
-				margin-left: 240px;
+				margin-left: 200px;
 				position: fixed;
 				width: 20px;
 				height: 30px;
@@ -68,21 +68,21 @@
 				
 			}
 			.alldata{
-				
+				float:left;
 				width: 100%;	
-				margin-left: 250px;
+				margin-left: 200px;
 				transition: 1s all;
 				position: fixed;
 				overflow-y: scroll;
-				max-height: 100%;
+				height: 100%;
 			}
 			
 			.graph{
 				margin-bottom:20px;
 				margin-top:20px;
 				padding: 5px;
-				max-width:100%;
-				overflow:hidden;
+				
+				
 			}	
 			
 			.circle{
@@ -162,6 +162,11 @@
 				padding-right:10px;
 				
 			}
+
+			#users{
+
+				width:100%;
+			}
 		</style>	
 	</head>
 	<body onload="myFunction()" data-spy="scroll" data-target=".conatiner" data-offset="50">
@@ -187,6 +192,7 @@
 					<li id="id"><a href="#fuitinsert">Fruit Insert</a></li>
 					<li id="id"><a href="#order">Orders</a></li>
 					<li id="id"><a href="#add">Add Fruits</a></li>
+					<li id="id"><a href="#addprice">Change Price</a></li>
 					<li id="id"><a href="#users">Users<a></li>
 					
 
@@ -451,7 +457,7 @@
 				</div>
 				<div class="graph" id="addprice">
 						
-					<h5 style="text-align:center">Add Quantity</h5>
+					<h5 style="text-align:center">Change Price</h5>
 
 					<table class="table col-md-12 table-bordered">
 						<thead class="thead-dark">
@@ -499,9 +505,60 @@
 				</div>
 				<div class="graph" id="users">
 
-					<h5 style="text-align:center">Users</h5>
+					<h5 style="text-align:center">Change Address</h5>
 				
 					<table class="table col-md-11 mx-auto table-bordered">
+
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col">No.</th>
+								<th scope="col">Name</th>
+								<th scope="col">Username</th>
+								<th scope="col">Address</th>
+								<th scope="col">New Addess</th>
+								<th scope="col">Change Address</th>
+							</tr>
+						</thead>
+
+					<tbody>
+						<?php
+							
+							
+							
+							$username = $_SESSION['login'];
+							$id = 0;
+							$display = "SELECT * from u_registration";
+
+							$sql = mysqli_query( $link, $display);
+							
+							while ( $row = mysqli_fetch_array( $sql ) ) {
+
+							$id++;	
+							echo '<form action="changeaddress.php?id=',$row[0],'" method="post">
+							<tr>
+							<th class="record" id="record-">',$id,'</th>
+							<td> ',$row[3],'</td>
+							<td>',$row[1],'</td>
+							<td>',$row[4],'</td>
+							
+							
+							<td><input type="text" name="data"></td>
+							<td><input type="submit" class="btn btn-primary" value="Change Address"></td>	
+							</tr>
+							</form>
+							';
+
+					
+							}
+						?>
+					<tbody>
+				</table>		
+			</div>
+				<div class="graph" id="users">
+
+					<h5 style="text-align:center">Users</h5>
+				
+					<table class="table col-md-8 mx-auto table-bordered">
 
 						<thead class="thead-dark">
 							<tr>
@@ -513,6 +570,7 @@
 								<th scope="col">Phone</th>
 								<th scope="col">Date</th>
 								<th scope="col">orders</th>
+								<th scope="col">Change Address</th>
 							</tr>
 						</thead>
 
@@ -538,7 +596,8 @@
 							<td>',$row[5],'</td>
 							<td>',$row[9],'</td>
 							<td>',$row[10],'</td>
-							<td><a class="btn btn-primary" href="userorders.php?id=',$row[0],'">orders</td>	
+							<td><a class="btn btn-primary" href="userorders.php?id=',$row[0],'">orders</td>
+							<td><a class="btn btn-primary" href="changeaddress.php?id=',$row[0],'">change Address</td>	
 							</tr>';
 
 					
@@ -593,11 +652,11 @@
 				}
 				else{
 				
-					sidebar.style.width = "10%";
+					sidebar.style.width = "200px";
 					a=5;					
-					text.style.marginLeft = "10%";
-					btn.style.marginLeft = "10%";
-					btn.style.width = "90%";
+					text.style.marginLeft = "200px";
+					btn.style.marginLeft = "200px";
+					btn.style.maxWidth = "85%";
 					
 				}
 			
