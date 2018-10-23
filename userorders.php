@@ -96,7 +96,8 @@
 									while ( $row = mysqli_fetch_array( $sql ) ) {
                                     $id = $row[0];
                                     $ids++;
-                                   
+                                   if($rows[$ids] > 0)
+                                   {
 									 echo '
 									<tr>
 									<th class="record" id="record-">',$id,'</th>
@@ -106,7 +107,9 @@
 									<td>',$row[5],' Rs</td>
 									<td>',$rows[$ids] * $row[5],' Rs</td>
 									</tr>
-									';
+                                    ';
+                                    
+                                   }
 									
 
 								}
