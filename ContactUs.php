@@ -39,7 +39,7 @@
 	<form action="" method="post" name="contactus" class="form-group col-md-4">
 	
 		<input type="text" name="name" class="form-control" required placeholder="Name">
-		<input type="text" name="email" class="form-control" required placeholder="Email Address">
+		<input type="email" name="email" class="form-control" required placeholder="Email Address">
 		<input type="text" name="phoneno" class="form-control" required placeholder="Phone no">
 			<input type="text" name="subject" class="form-control" required placeholder="Subject">
 		<textarea class="form-control" name="msg" required placeholder="Write message here..."></textarea>

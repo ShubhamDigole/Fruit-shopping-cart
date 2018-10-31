@@ -19,10 +19,7 @@ session_start();
 			margin-top:150px;
 		}
 		
-		form{
-			/* border:2px solid red;;  */
-
-		}
+	
 		.form-control{
 
 			margin-top:10px;
@@ -69,7 +66,7 @@ session_start();
 						
 						<a id="link" href="forgot_password.php">Forgot password?</a> <a id="link" href="Registration.php">Registration </a>
 					</form>
-					<!--<div style="font-size: 11px; color: #cc0000; margin-top: 10px"> </div>-->
+					
 				
 		
 		<?php

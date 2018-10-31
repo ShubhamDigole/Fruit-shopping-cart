@@ -161,32 +161,24 @@
 				//store user info into registration table
 				$query="INSERT INTO u_registration(Username, Passwords, C_Name, Address, email, DOB, Gender, Age, Phone_no, date) VALUES ('$user','$pass','$NAME','$ADD','$EMAIL','$DOB','$GENDER','$AGE','$PHONE', '$date')";
 					
-					//to check if create table of user is working
-					if(mysqli_query($link,$create))
-					{
-						echo '<script> alert ("Registration successful please login to continue..")</script>';
+						
 			
 						//to check if data is storring in database
 						if(mysqli_query($link,$query))
 						{	
-								header("location:loginpage.php");
 								
+								?> <script> alert ("Registration successful please login to continue..");
+								window.location.href = 'index.php';
+								</script>
+								<?php
 						}	
 						else{
 
 								mysqli_error($query);
 						}
-					}
+				
 
-					else 
-					{
-						echo "Error : Could not able to execute";
-						mysqli_error($create);
-						mysqli_error($link);
-
-					}
-
-				mysqli_close($link);
+									
 				}
 			
 			else{
