@@ -572,7 +572,7 @@
 								<th scope="col">Phone</th>
 								<th scope="col">Date</th>
 								<th scope="col">orders</th>
-								
+								<th scope="col">Set Admin</th>
 							</tr>
 						</thead>
 
@@ -599,9 +599,10 @@
 							<td>',$row[9],'</td>
 							<td>',$row[10],'</td>
 							<td><a class="btn btn-primary" href="userorders.php?id=',$row[0],'">orders</td>
+							<td><input class="btn btn-primary" type="submit"></td>
 							</tr>';
 
-					
+								
 							}
 						?>
 					<tbody>
